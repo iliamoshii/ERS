@@ -1,0 +1,213 @@
+/*******************************************************************************
+ * Admin Panel — additions on top of user-panel.css
+ * The sidebar/topbar/card/table/badge/form foundations already match
+ * (admin/partials/*.php use the exact same classes as user/partials/*.php).
+ * This file only adds what's genuinely admin-specific.
+ *******************************************************************************/
+
+/* ── Dashboard: extra stat-card color variants ─────────────── */
+.stat-users     .stat-icon { background: rgba(91,141,239,0.12);  color: #5b8def; }
+.stat-locations .stat-icon { background: rgba(20,255,184,0.12);  color: #14ffb8; }
+
+/* ── Role badges (users.php) ───────────────────────────────── */
+.role-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 12px; border-radius: 20px;
+    font-size: 11px; font-weight: 600; white-space: nowrap;
+}
+.role-admin { background: rgba(255,170,0,0.12); color: #ffaa00; }
+.role-user  { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); }
+
+/* ── Thumbnail (locations.php list) ────────────────────────── */
+.loc-thumb {
+    width: 52px; height: 52px; border-radius: 10px; overflow: hidden;
+    background: rgba(255,255,255,0.05); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.25); font-size: 18px;
+}
+.loc-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.loc-title-cell { display: flex; align-items: center; gap: 12px; }
+.loc-title-cell .loc-name { font-weight: 600; color: #fff; }
+.loc-title-cell .loc-sub  { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+/* ── Category card grid (categories.php) ───────────────────── */
+.category-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+    gap: 16px; margin-bottom: 28px;
+}
+.category-card {
+    background: rgba(26,31,58,0.8);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px; padding: 20px;
+    display: flex; align-items: center; gap: 14px;
+    transition: all 0.25s; position: relative;
+}
+.category-card:hover { border-color: rgba(57,255,20,0.2); }
+.category-card-icon {
+    width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(57,255,20,0.15), rgba(0,240,255,0.1));
+    color: #39FF14; display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+}
+.category-card-body { flex: 1; min-width: 0; }
+.category-card-body .cat-name  { font-size: 14px; font-weight: 700; color: #fff; }
+.category-card-body .cat-count { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+.category-card-actions { display: flex; gap: 6px; }
+.category-card-actions .btn-action { padding: 6px 9px; }
+
+/* ── Inline create/edit form card (categories.php) ─────────── */
+.inline-form-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.inline-form-row .field-col { flex: 1; min-width: 160px; }
+.inline-form-row .field-col.icon-col { max-width: 140px; }
+
+/* ── Location create/edit form layout ──────────────────────── */
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 18px; }
+.form-grid .span-2 { grid-column: span 2; }
+@media (max-width: 700px) { .form-grid .span-2 { grid-column: span 1; } }
+
+/* ── Image gallery manager (location-form.php) ─────────────── */
+.image-upload-zone {
+    border: 2px dashed rgba(57,255,20,0.25); border-radius: 16px;
+    padding: 28px; text-align: center; cursor: pointer;
+    transition: all 0.2s; margin-bottom: 20px; background: rgba(57,255,20,0.02);
+}
+.image-upload-zone:hover { border-color: #39FF14; background: rgba(57,255,20,0.05); }
+.image-upload-zone i { font-size: 28px; color: #39FF14; margin-bottom: 8px; display: block; }
+.image-upload-zone p { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+.image-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px,1fr));
+    gap: 14px;
+}
+.image-grid-item {
+    position: relative; border-radius: 14px; overflow: hidden;
+    aspect-ratio: 4/3; border: 2px solid rgba(255,255,255,0.06);
+}
+.image-grid-item.is-primary { border-color: #39FF14; }
+.image-grid-item img { width: 100%; height: 100%; object-fit: cover; }
+.image-grid-item .primary-tag {
+    position: absolute; top: 8px; right: 8px;
+    background: #39FF14; color: #000; font-size: 10px; font-weight: 700;
+    padding: 3px 9px; border-radius: 20px;
+}
+.image-actions {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    display: flex; gap: 6px; padding: 8px;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+}
+.image-actions .btn-action {
+    flex: 1; justify-content: center; padding: 6px 4px; font-size: 11px;
+    background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.2); color: #fff;
+}
+.image-actions .btn-action:hover { background: rgba(255,255,255,0.25); }
+
+/* ── Pagination wiring (CSS already exists in user-panel.css;
+     this just exposes it as a flex container without breaking RTL) ── */
+.pagination-wrap { direction: ltr; }
+.pagination-wrap a { text-decoration: none; }
+
+/* ── KPI delta tag (optional small "+N this week" on dashboard) ── */
+.kpi-delta {
+    font-size: 11px; color: #39FF14; margin-top: 4px;
+    display: inline-flex; align-items: center; gap: 4px;
+}
+
+/* ── Pagination buttons (used in all admin list pages) ─────── */
+.pagination-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.page-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 34px; height: 34px; padding: 0 8px; border-radius: 9px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 600;
+    text-decoration: none; transition: all 0.2s;
+}
+.page-btn:hover  { background: rgba(57,255,20,0.1); color: #39FF14; border-color: rgba(57,255,20,0.3); }
+.page-btn.active { background: rgba(57,255,20,0.15); color: #39FF14; border-color: rgba(57,255,20,0.4); }
+
+/* ── Contact inbox list ─────────────────────────────────────── */
+.contact-list { display: flex; flex-direction: column; gap: 2px; }
+
+.contact-item {
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    overflow: hidden;
+    transition: border-color 0.2s;
+}
+.contact-item.unread { border-color: rgba(57,255,20,0.2); }
+.contact-item:hover  { border-color: rgba(255,255,255,0.12); }
+
+.contact-header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px; cursor: pointer;
+    background: rgba(255,255,255,0.02);
+    transition: background 0.2s;
+}
+.contact-header:hover { background: rgba(255,255,255,0.04); }
+
+.contact-meta {
+    display: flex; align-items: center; gap: 10px;
+    flex-shrink: 0; min-width: 180px;
+}
+
+.contact-unread-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #39FF14; flex-shrink: 0;
+    opacity: 0; transition: opacity 0.2s;
+}
+.contact-unread-dot.visible { opacity: 1; }
+
+.contact-sender { display: flex; flex-direction: column; }
+.contact-name  { font-size: 13px; font-weight: 700; color: #fff; }
+.contact-email { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+.contact-subject-wrap { flex: 1; min-width: 0; }
+.contact-subject {
+    display: block; font-size: 13px; font-weight: 600;
+    color: rgba(255,255,255,0.85); white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+}
+.contact-preview {
+    display: block; font-size: 12px; color: rgba(255,255,255,0.4);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    margin-top: 2px;
+}
+.contact-item.unread .contact-subject { color: #fff; }
+
+.contact-right {
+    flex-shrink: 0; display: flex; align-items: center; gap: 10px;
+    text-align: left;
+}
+.contact-date  { font-size: 11px; color: rgba(255,255,255,0.35); white-space: nowrap; }
+.contact-arrow { font-size: 12px; color: rgba(255,255,255,0.3); transition: transform 0.25s; }
+
+.contact-body {
+    padding: 16px 20px 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255,255,255,0.015);
+}
+.contact-body-meta {
+    display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 14px;
+}
+.contact-body-meta span {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; color: rgba(255,255,255,0.5);
+}
+.contact-body-meta i { color: #39FF14; }
+.contact-body-text {
+    font-size: 14px; color: rgba(255,255,255,0.8);
+    line-height: 1.8; margin-bottom: 16px;
+    white-space: pre-wrap; word-break: break-word;
+}
+.contact-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ── Comments: star rating display ─────────────────────────── */
+.star-rating { display: inline-flex; align-items: center; gap: 2px; }
+.star-rating i { font-size: 11px; }
+
+/* ── Pending comment badge on sidebar/dashboard ─────────────── */
+.nav-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 18px; height: 18px; border-radius: 50%;
+    background: #ff3b30; color: #fff;
+    font-size: 10px; font-weight: 700; margin-right: auto; padding: 0 4px;
+}

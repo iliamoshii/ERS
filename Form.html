@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>ورود و عضویت | سامانه رزرو استادیوم</title>
+
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+
+    <!-- فونت‌های فارسی -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/FontAwesome.Pro.7.1.0/css/all.css">
+    
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/form.css">
+
+    <!-- Popup Notification System -->
+    <link rel="stylesheet" href="assets/css/popup.css">
+</head>
+
+<body class="auth-page">
+
+<!-- Animated Background -->
+<div class="auth-bg-wrapper">
+    <div class="auth-bg-gradient"></div>
+    <div class="auth-grid-overlay"></div>
+    <div id="bg-icons-container"></div>
+</div>
+
+<div class="page-wrapper">
+    <!-- Back to Home Button -->
+    <div class="back-to-home">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            <span>بازگشت به صفحه اصلی</span>
+        </a>
+    </div>
+
+    <!-- Auth Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-11">
+                    
+                    <!-- Auth Container -->
+                    <div class="auth-container" data-aos="fade-up" data-aos-duration="800">
+                        
+                        <!-- Logo -->
+                        <div class="auth-logo">
+                            <img src="assets/images/logo.svg" alt="لوگو سامانه رزرو" class="logo-img">
+                            <h3 class="auth-title">سامانه رزرو استادیوم</h3>
+                            <p class="auth-subtitle">به میدان بازی خوش آمدید</p>
+                        </div>
+
+                        <!-- Tabs Navigation -->
+                        <div class="auth-tabs">
+                            <button class="auth-tab active" data-tab="login">
+                                <i class="fas fa-sign-in-alt"></i>
+                                <span>ورود</span>
+                            </button>
+                            <button class="auth-tab" data-tab="register">
+                                <i class="fas fa-user-plus"></i>
+                                <span>ثبت‌نام</span>
+                            </button>
+                        </div>
+
+                        <!-- Tab Content -->
+                        <div class="auth-content">
+                            
+                            <!-- ═══════════════════════════════
+                                 Login Form
+                            ═══════════════════════════════ -->
+                            <div class="auth-form-wrapper active" id="login-form">
+                                <form class="auth-form" id="loginForm" novalidate>
+
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-user"></i>
+                                            نام کاربری / ایمیل / موبایل
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <input 
+                                                type="text"
+                                                name="identifier"
+                                                id="loginIdentifier"
+                                                class="form-control-neon" 
+                                                placeholder="username یا email یا 09..."
+                                                autocomplete="username"
+                                                required
+                                            >
+                                            <span class="input-icon">
+                                                <i class="fas fa-envelope"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-lock"></i>
+                                            رمز عبور
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <input 
+                                                type="password"
+                                                name="password"
+                                                class="form-control-neon" 
+                                                placeholder="••••••••"
+                                                id="loginPassword"
+                                                autocomplete="current-password"
+                                                required
+                                            >
+                                            <span class="input-icon toggle-password" data-target="loginPassword">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-options">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="remember_me" id="rememberMe">
+                                            <span class="checkmark"></span>
+                                            <span class="checkbox-label">مرا به خاطر بسپار</span>
+                                        </label>
+                                        <a href="reset-password.php" class="forgot-link">فراموشی رمز عبور؟</a>
+                                    </div>
+
+                                    <button type="submit" class="theme-btn submit-btn" id="loginBtn">
+                                        <span class="btn-text">ورود به میدان</span>
+                                        <span class="btn-icon">
+                                            <i class="fas fa-arrow-left"></i>
+                                        </span>
+                                    </button>
+
+                                </form>
+                            </div>
+
+                            <!-- ═══════════════════════════════
+                                 Register Form
+                            ═══════════════════════════════ -->
+                            <div class="auth-form-wrapper" id="register-form">
+                                <form class="auth-form" id="registerForm" novalidate>
+
+                                    <!-- Full Name -->
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-user"></i>
+                                            نام و نام خانوادگی
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <input 
+                                                type="text"
+                                                name="full_name"
+                                                id="fullName"
+                                                class="form-control-neon" 
+                                                placeholder="علی احمدی"
+                                                autocomplete="name"
+                                                required
+                                            >
+                                            <span class="input-icon">
+                                                <i class="fas fa-id-card"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Username -->
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-at"></i>
+                                            نام کاربری
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <input 
+                                                type="text"
+                                                name="username"
+                                                id="regUsername"
+                                                class="form-control-neon"
+                                                placeholder="ali_ahmadi"
+                                                autocomplete="username"
+                                                pattern="[a-zA-Z0-9_\-]{3,80}"
+                                                required
+                                            >
+                                            <span class="input-icon">
+                                                <i class="fas fa-user-tag"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Phone -->
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-phone"></i>
+                                            شماره موبایل
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <input 
+                                                type="tel"
+                                                name="phone"
+                                                id="regPhone"
+                                                class="form-control-neon text-end" 
+                                                placeholder="09123456789"
+                                                pattern="[0-9]{11}"
+                                                autocomplete="tel"
+                                                required
+                                            >
+                                            <span class="input-icon">
+                                                <i class="fas fa-mobile-alt"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Email (optional) -->
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-envelope"></i>
+                                            ایمیل (اختیاری)
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <input 
+                                                type="email"
+                                                name="email"
+                                                id="regEmail"
+                                                class="form-control-neon" 
+                                                placeholder="email@example.com"
+                                                autocomplete="email"
+                                            >
+                                            <span class="input-icon">
+                                                <i class="fas fa-at"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-lock"></i>
+                                            رمز عبور
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <input 
+                                                type="password"
+                                                name="password"
+                                                class="form-control-neon" 
+                                                placeholder="••••••••"
+                                                id="registerPassword"
+                                                autocomplete="new-password"
+                                                minlength="8"
+                                                required
+                                            >
+                                            <span class="input-icon toggle-password" data-target="registerPassword">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                        <div class="password-strength">
+                                            <div class="strength-bar">
+                                                <div class="strength-progress"></div>
+                                            </div>
+                                            <span class="strength-text">قدرت رمز عبور</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Confirm Password -->
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-lock"></i>
+                                            تکرار رمز عبور
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <input 
+                                                type="password"
+                                                name="password_confirm"
+                                                class="form-control-neon"
+                                                placeholder="••••••••"
+                                                id="registerPasswordConfirm"
+                                                autocomplete="new-password"
+                                                required
+                                            >
+                                            <span class="input-icon toggle-password" data-target="registerPasswordConfirm">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-options">
+                                        <label class="custom-checkbox">
+                                            <input type="checkbox" name="terms" id="termsCheck" required>
+                                            <span class="checkmark"></span>
+                                            <span class="checkbox-label">
+                                                <a href="#" class="terms-link">قوانین و مقررات</a> را می‌پذیرم
+                                            </span>
+                                        </label>
+                                    </div>
+
+                                    <button type="submit" class="theme-btn submit-btn" id="registerBtn">
+                                        <span class="btn-text">ایجاد حساب هواداری</span>
+                                        <span class="btn-icon">
+                                            <i class="fas fa-user-plus"></i>
+                                        </span>
+                                    </button>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="auth-divider">
+                            <span>یا ورود از طریق</span>
+                        </div>
+
+                        <!-- Social Login -->
+                        <div class="social-login">
+                            <button class="social-btn google-btn" type="button">
+                                <i class="fab fa-google"></i>
+                                <span>گوگل</span>
+                            </button>
+                            <button class="social-btn apple-btn" type="button">
+                                <i class="fab fa-apple"></i>
+                                <span>اپل</span>
+                            </button>
+                        </div>
+
+                        <!-- Features -->
+                        <div class="auth-features">
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>امن و مطمئن</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-clock"></i>
+                                <span>دسترسی ۲۴/۷</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>اپلیکیشن موبایل</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div class="trust-badges" data-aos="fade-up" data-aos-delay="200">
+                        <div class="badge-item">
+                            <i class="fas fa-users"></i>
+                            <span>بیش از ۱۰،۰۰۰ کاربر</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="fas fa-star"></i>
+                            <span>امتیاز ۴.۸ از ۵</span>
+                        </div>
+                        <div class="badge-item">
+                            <i class="fas fa-lock"></i>
+                            <span>اطلاعات محافظت شده</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Loading Overlay (unchanged) -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner">
+        <div class="spinner-ring"></div>
+        <div class="spinner-text">در حال پردازش...</div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/aos.js"></script>
+
+<!-- Popup system must load before Form.js -->
+<script src="assets/js/popup.js"></script>
+<script src="assets/js/Form.js"></script>
+
+</body>
+</html>

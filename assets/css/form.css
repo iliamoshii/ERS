@@ -1,0 +1,895 @@
+/*******************************************************************************
+ * Form Page Styles - Login & Registration
+ * Matching the main website theme with modern glassmorphism design
+ *******************************************************************************/
+
+/* ==================== 01. Page Base & Background ==================== */
+.auth-page {
+    background: var(--dark-bg, #0a0e27);
+    font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #ffffff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Background Wrapper */
+.auth-bg-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Animated Gradient Background */
+.auth-bg-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(57, 255, 20, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(0, 240, 255, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.08) 0%, transparent 60%);
+    animation: gradientShift 15s ease-in-out infinite alternate;
+}
+
+@keyframes gradientShift {
+    0% { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Grid Overlay */
+.auth-grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+}
+
+/* ==================== 02. Floating Icons Background ==================== */
+#bg-icons-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.floating-icon {
+    position: absolute;
+    color: rgba(57, 255, 20, 0.15);
+    filter: drop-shadow(0 0 10px rgba(57, 255, 20, 0.3));
+    animation: floatAnimation linear infinite;
+    pointer-events: none;
+    will-change: transform;
+}
+
+@keyframes floatAnimation {
+    0% { 
+        transform: translateY(0) rotate(0deg) scale(1); 
+        opacity: 0.15;
+    }
+    50% { 
+        transform: translateY(-50px) rotate(180deg) scale(1.15); 
+        opacity: 0.25;
+    }
+    100% { 
+        transform: translateY(0) rotate(360deg) scale(1); 
+        opacity: 0.15;
+    }
+}
+
+/* ==================== 03. Back to Home Button ==================== */
+.back-to-home {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: rgba(26, 31, 58, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 50px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:hover {
+    background: rgba(57, 255, 20, 0.1);
+    border-color: #39FF14;
+    color: #39FF14;
+    transform: translateX(5px);
+    box-shadow: 0 6px 25px rgba(57, 255, 20, 0.3);
+}
+
+.back-btn i {
+    font-size: 16px;
+    transition: transform 0.3s;
+}
+
+.back-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* ==================== 04. Auth Section ==================== */
+.auth-section {
+    position: relative;
+    z-index: 10;
+    padding: 40px 0;
+}
+
+/* ==================== 05. Auth Container ==================== */
+.auth-container {
+    background: rgba(26, 31, 58, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(57, 255, 20, 0.2);
+    border-radius: 30px;
+    padding: 50px;
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(57, 255, 20, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(57, 255, 20, 0.05) 0%, transparent 50%, rgba(0, 240, 255, 0.05) 100%);
+    pointer-events: none;
+}
+
+/* ==================== 06. Auth Logo & Header ==================== */
+.auth-logo {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.logo-img {
+    max-width: 150px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.4));
+    animation: logoGlow 3s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes logoGlow {
+    0%, 100% { filter: drop-shadow(0 0 20px rgba(57, 255, 20, 0.4)); }
+    50% { filter: drop-shadow(0 0 30px rgba(57, 255, 20, 0.6)); }
+}
+
+.auth-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+/* ==================== 07. Auth Tabs ==================== */
+.auth-tabs {
+    display: flex;
+    gap: 12px;
+    background: rgba(10, 14, 39, 0.6);
+    padding: 8px;
+    border-radius: 15px;
+    margin-bottom: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.auth-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 20px;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.auth-tab::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #39FF14, #00F0FF);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.auth-tab span,
+.auth-tab i {
+    position: relative;
+    z-index: 2;
+}
+
+.auth-tab:hover {
+    color: #ffffff;
+}
+
+.auth-tab.active {
+    color: #000000;
+    font-weight: 700;
+}
+
+.auth-tab.active::before {
+    opacity: 1;
+}
+
+.auth-tab i {
+    font-size: 18px;
+}
+
+/* ==================== 08. Auth Content & Forms ==================== */
+.auth-content {
+    position: relative;
+    min-height: 400px;
+}
+
+.auth-form-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(30px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-form-wrapper.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* ==================== 09. Form Groups ==================== */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 12px;
+}
+
+.form-label i {
+    color: #39FF14;
+    font-size: 14px;
+}
+
+/* ==================== 10. Input Wrapper ==================== */
+.input-wrapper {
+    position: relative;
+}
+
+.form-control-neon {
+    width: 100%;
+    height: 56px;
+    background: rgba(10, 14, 39, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 0 50px 0 20px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.form-control-neon::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.form-control-neon:focus {
+    background: rgba(57, 255, 20, 0.05);
+    border-color: #39FF14;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+.form-control-neon.text-end {
+    text-align: left;
+    direction: ltr;
+}
+
+/* Input Icon */
+.input-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 16px;
+    transition: color 0.3s;
+    pointer-events: none;
+}
+
+.form-control-neon:focus + .input-icon {
+    color: #39FF14;
+}
+
+/* Toggle Password */
+.toggle-password {
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.toggle-password:hover {
+    color: #39FF14;
+}
+
+/* ==================== 11. Password Strength Indicator ==================== */
+.password-strength {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.strength-progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #ff3366, #ffaa00, #39FF14);
+    border-radius: 4px;
+    transition: width 0.4s, background 0.4s;
+}
+
+.strength-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+}
+
+/* Strength Levels */
+.strength-progress.weak {
+    width: 33%;
+    background: #ff3366;
+}
+
+.strength-progress.medium {
+    width: 66%;
+    background: #ffaa00;
+}
+
+.strength-progress.strong {
+    width: 100%;
+    background: #39FF14;
+}
+
+/* ==================== 12. Form Options ==================== */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+/* Custom Checkbox */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    width: 20px;
+    height: 20px;
+    background: rgba(10, 14, 39, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #000000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background: #39FF14;
+    border-color: #39FF14;
+}
+
+.custom-checkbox input:checked ~ .checkmark::after {
+    display: block;
+}
+
+.checkbox-label {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Forgot Link */
+.forgot-link,
+.terms-link {
+    font-size: 13px;
+    color: #39FF14;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.forgot-link:hover,
+.terms-link:hover {
+    color: #00F0FF;
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.4);
+}
+
+/* ==================== 13. Submit Button ==================== */
+.submit-btn {
+    width: 100%;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #39FF14, #00F0FF);
+    border: none;
+    border-radius: 14px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(57, 255, 20, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(57, 255, 20, 0.5);
+}
+
+.submit-btn:active {
+    transform: translateY(-1px);
+}
+
+.btn-text,
+.btn-icon {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-icon i {
+    transition: transform 0.3s;
+}
+
+.submit-btn:hover .btn-icon i {
+    transform: translateX(-5px);
+}
+
+/* ==================== 14. Divider ==================== */
+.auth-divider {
+    position: relative;
+    text-align: center;
+    margin: 35px 0 30px;
+}
+
+.auth-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.auth-divider span {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+    background: rgba(26, 31, 58, 0.85);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ==================== 15. Social Login ==================== */
+.social-login {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.social-btn {
+    flex: 1;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(10, 14, 39, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-btn i {
+    font-size: 18px;
+}
+
+.google-btn:hover {
+    background: rgba(234, 67, 53, 0.1);
+    border-color: #ea4335;
+    color: #ea4335;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(234, 67, 53, 0.2);
+}
+
+.apple-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* ==================== 16. Auth Features ==================== */
+.auth-features {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.feature-item i {
+    font-size: 24px;
+    color: #39FF14;
+    margin-bottom: 5px;
+}
+
+.feature-item span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ==================== 17. Trust Badges ==================== */
+.trust-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(26, 31, 58, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+}
+
+.badge-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+}
+
+.badge-item i {
+    color: #39FF14;
+    font-size: 16px;
+}
+
+/* ==================== 18. Loading Overlay ==================== */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 14, 39, 0.95);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.loading-overlay.active {
+    display: flex;
+}
+
+.loading-spinner {
+    text-align: center;
+}
+
+.spinner-ring {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(57, 255, 20, 0.2);
+    border-top-color: #39FF14;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.4);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spinner-text {
+    color: #39FF14;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ==================== 19. Validation States ==================== */
+.form-control-neon.is-invalid {
+    border-color: #ff3366;
+    animation: shake 0.5s;
+}
+
+.form-control-neon.is-valid {
+    border-color: #39FF14;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.error-message {
+    display: none;
+    margin-top: 8px;
+    color: #ff3366;
+    font-size: 12px;
+}
+
+.form-group.has-error .error-message {
+    display: block;
+}
+
+/* ==================== 20. Responsive Design ==================== */
+@media (max-width: 991px) {
+    .back-to-home {
+        top: 20px;
+        right: 20px;
+    }
+
+    .back-btn span {
+        display: none;
+    }
+
+    .back-btn {
+        padding: 12px;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    .auth-container {
+        padding: 35px 25px;
+        border-radius: 20px;
+    }
+
+    .auth-title {
+        font-size: 20px;
+    }
+
+    .auth-tabs {
+        gap: 8px;
+    }
+
+    .auth-tab {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+
+    .auth-tab i {
+        font-size: 16px;
+    }
+
+    .form-control-neon {
+        height: 52px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        height: 52px;
+        font-size: 15px;
+    }
+
+    .social-login {
+        flex-direction: column;
+    }
+
+    .trust-badges {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .auth-features {
+        flex-wrap: wrap;
+    }
+
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 575px) {
+    .back-to-home {
+        top: 15px;
+        right: 15px;
+    }
+
+    .auth-container {
+        padding: 30px 20px;
+    }
+
+    .logo-img {
+        max-width: 120px;
+    }
+
+    .auth-title {
+        font-size: 18px;
+    }
+
+    .auth-subtitle {
+        font-size: 13px;
+    }
+
+    .auth-tab {
+        flex-direction: column;
+        gap: 4px;
+        padding: 10px;
+    }
+
+    .auth-tab span {
+        font-size: 12px;
+    }
+}
+
+/* ==================== 21. Print Styles ==================== */
+@media print {
+    .auth-bg-wrapper,
+    .back-to-home,
+    .social-login,
+    .auth-features {
+        display: none !important;
+    }
+}
+
+/* ==================== 22. Accessibility ==================== */
+.form-control-neon:focus,
+.auth-tab:focus,
+.submit-btn:focus,
+.social-btn:focus {
+    outline: 2px solid #39FF14;
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    .auth-container {
+        border-width: 2px;
+    }
+
+    .form-control-neon {
+        border-width: 3px;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

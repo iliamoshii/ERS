@@ -1,0 +1,109 @@
+<svg width="1400" height="800" viewBox="0 0 1400 800" xmlns="http://www.w3.org/2000/svg">
+
+    <defs>
+        <!-- Background -->
+        <radialGradient id="bg" cx="50%" cy="40%" r="80%">
+            <stop offset="0%" stop-color="#05060A"/>
+            <stop offset="60%" stop-color="#02030A"/>
+            <stop offset="100%" stop-color="#000000"/>
+        </radialGradient>
+
+        <!-- Pitch -->
+        <linearGradient id="pitch" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#02210C"/>
+            <stop offset="100%" stop-color="#010C04"/>
+        </linearGradient>
+
+        <!-- Glow -->
+        <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="4" result="b"/>
+            <feColorMatrix in="b" type="matrix"
+                           values="0 0 0 0 0.22
+                0 0 0 0 1
+                0 0 0 0 0.08
+                0 0 0 1 0"/>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+
+        <!-- Scanlines -->
+        <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse">
+            <rect width="4" height="1" fill="#39FF14" opacity="0.08"/>
+        </pattern>
+
+        <!-- Player glow -->
+        <radialGradient id="player" cx="50%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="40%" stop-color="#39FF14"/>
+            <stop offset="100%" stop-color="#39FF14" stop-opacity="0"/>
+        </radialGradient>
+
+    </defs>
+
+    <!-- Background -->
+    <rect width="1400" height="800" fill="url(#bg)"/>
+
+    <!-- Scanline animation -->
+    <rect x="0" y="-4" width="1400" height="804" fill="url(#scan)" opacity="0.5">
+        <animate attributeName="y" from="-4" to="0" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="5s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Stadium bowl -->
+    <g transform="translate(700,400)">
+        <ellipse rx="620" ry="300" fill="none" stroke="#39FF14" stroke-width="2" opacity="0.5" filter="url(#glow)"/>
+        <ellipse rx="580" ry="270" fill="none" stroke="#09331B" stroke-width="2"/>
+
+        <!-- Simplified glowing stands -->
+        <g opacity="0.7">
+            <ellipse rx="600" ry="285" fill="none" stroke="#39FF14" stroke-width="1" filter="url(#glow)"/>
+            <ellipse rx="560" ry="260" fill="none" stroke="#39FF14" stroke-width="1" opacity="0.5"/>
+        </g>
+
+        <!-- Pitch -->
+        <g>
+            <rect x="-430" y="-240" width="860" height="480" rx="20" fill="url(#pitch)" stroke="#39FF14" stroke-width="2" filter="url(#glow)"/>
+
+            <!-- Field lines -->
+            <g stroke="#39FF14" stroke-width="2" fill="none" filter="url(#glow)">
+                <rect x="-410" y="-220" width="820" height="440"/>
+                <line x1="0" y1="-220" x2="0" y2="220"/>
+                <circle cx="0" cy="0" r="70"/>
+                <circle cx="0" cy="0" r="3" fill="#39FF14"/>
+
+                <!-- Penalty boxes -->
+                <rect x="-410" y="-120" width="140" height="240"/>
+                <rect x="270" y="-120" width="140" height="240"/>
+
+                <!-- Goal areas -->
+                <rect x="-410" y="-60" width="60" height="120"/>
+                <rect x="350" y="-60" width="60" height="120"/>
+            </g>
+
+            <!-- Center glow -->
+            <circle cx="0" cy="0" r="90" stroke="#39FF14" stroke-width="1" opacity="0.4" filter="url(#glow)"/>
+        </g>
+
+        <!-- Players (simplified, fewer animations) -->
+        <g fill="url(#player)" filter="url(#glow)">
+            <!-- Left team -->
+            <circle cx="-260" cy="-80" r="6"/>
+            <circle cx="-260" cy="0" r="6"/>
+            <circle cx="-260" cy="80" r="6"/>
+            <circle cx="-330" cy="0" r="6"/>
+
+            <!-- Right team -->
+            <circle cx="260" cy="-80" r="6"/>
+            <circle cx="260" cy="0" r="6"/>
+            <circle cx="260" cy="80" r="6"/>
+            <circle cx="330" cy="0" r="6"/>
+
+            <!-- Light motion -->
+            <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite"/>
+        </g>
+
+    </g>
+
+</svg>

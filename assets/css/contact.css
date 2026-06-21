@@ -1,0 +1,737 @@
+/*******************************************************************************
+ * Contact Page Styles - Modern Contact Form & Info
+ * Matching the main website theme
+ *******************************************************************************/
+
+/* ==================== 01. Page Base ==================== */
+.contact-page {
+    background: var(--dark-bg, #0a0e27);
+    color: #ffffff;
+}
+
+/* ==================== 02. Page Header ==================== */
+.page-header-section {
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    padding: 180px 0 100px;
+    overflow: hidden;
+}
+
+.header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(57, 255, 20, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(0, 240, 255, 0.15) 0%, transparent 60%);
+    animation: headerGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes headerGlow {
+    0% { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+.header-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(57, 255, 20, 0.1);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    padding: 10px 24px;
+    border-radius: 50px;
+    color: #39FF14;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.page-title .highlight {
+    background: linear-gradient(135deg, #39FF14, #00F0FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-description {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ==================== 03. Contact Info Cards ==================== */
+.contact-info-section {
+    padding: 0 0 60px;
+    margin-top: -60px;
+    position: relative;
+    z-index: 100;
+}
+
+.info-card {
+    background: rgba(26, 31, 58, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s;
+    height: 100%;
+    position: relative;
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(57, 255, 20, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.info-card.featured {
+    background: linear-gradient(145deg, rgba(57, 255, 20, 0.1), rgba(26, 31, 58, 0.9));
+    border: 2px solid rgba(57, 255, 20, 0.3);
+}
+
+.featured-badge {
+    position: absolute;
+    top: 76px;
+    right: 15px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #39FF14, #00F0FF);
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.icon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+}
+
+.icon-wrapper i {
+    position: relative;
+    z-index: 2;
+    font-size: 36px;
+    color: #39FF14;
+}
+
+.icon-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(57, 255, 20, 0.2);
+    border-radius: 50%;
+    filter: blur(15px);
+    animation: iconPulse 3s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+.info-card h5 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.info-card p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 20px;
+}
+
+.contact-link {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.contact-link:hover {
+    color: #39FF14;
+    padding-right: 10px;
+}
+
+/* ==================== 04. Main Contact Section ==================== */
+.main-contact-section {
+    padding: 60px 0;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+    background: rgba(26, 31, 58, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 25px;
+    padding: 40px;
+}
+
+.form-header {
+    margin-bottom: 35px;
+}
+
+.form-header h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.form-header p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+}
+
+.form-label i {
+    color: #39FF14;
+    font-size: 14px;
+}
+
+.form-control-modern {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(10, 14, 39, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    color: #ffffff;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.form-control-modern::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.form-control-modern:focus {
+    outline: none;
+    border-color: #39FF14;
+    background: rgba(57, 255, 20, 0.05);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+textarea.form-control-modern {
+    resize: vertical;
+    min-height: 150px;
+}
+
+select.form-control-modern {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2339FF14' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 15px center;
+    padding-left: 40px;
+}
+
+.char-counter {
+    text-align: left;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 8px;
+}
+
+.btn-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(135deg, #39FF14, #00F0FF);
+    border: none;
+    border-radius: 14px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(57, 255, 20, 0.5);
+}
+
+.btn-submit .btn-icon i {
+    transition: transform 0.3s;
+}
+
+.btn-submit:hover .btn-icon i {
+    transform: translateX(-5px);
+}
+
+/* Alerts */
+.alert-success,
+.alert-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 20px;
+}
+
+.alert-success {
+    background: rgba(57, 255, 20, 0.1);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    color: #39FF14;
+}
+
+.alert-error {
+    background: rgba(255, 59, 48, 0.1);
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    color: #ff3b30;
+}
+
+.alert-success i,
+.alert-error i {
+    font-size: 24px;
+    margin-top: 2px;
+}
+
+.alert-success strong,
+.alert-error strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.alert-success p,
+.alert-error p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* ==================== 05. Contact Sidebar ==================== */
+.contact-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-card {
+    background: rgba(26, 31, 58, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.sidebar-card h5 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+/* Quick Links */
+.quick-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quick-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    background: rgba(10, 14, 39, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.quick-link:hover {
+    background: rgba(57, 255, 20, 0.05);
+    border-color: rgba(57, 255, 20, 0.3);
+    color: #39FF14;
+    transform: translateX(-5px);
+}
+
+.quick-link i:first-child {
+    color: #39FF14;
+    font-size: 18px;
+}
+
+.quick-link span {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.quick-link i:last-child {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+}
+
+/* Working Hours */
+.working-hours {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hour-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hour-item:last-child {
+    border-bottom: none;
+}
+
+.hour-item .day {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hour-item .time {
+    font-size: 14px;
+    font-weight: 700;
+    color: #39FF14;
+}
+
+.hour-item.special .time {
+    color: #ff3b30;
+}
+
+/* Social Grid */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px;
+    background: rgba(10, 14, 39, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-item:hover {
+    transform: translateY(-5px);
+}
+
+.social-item i {
+    font-size: 24px;
+}
+
+.social-item span {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.social-item.instagram {
+    color: #E4405F;
+}
+
+.social-item.instagram:hover {
+    background: rgba(228, 64, 95, 0.1);
+    border-color: #E4405F;
+}
+
+.social-item.telegram {
+    color: #0088cc;
+}
+
+.social-item.telegram:hover {
+    background: rgba(0, 136, 204, 0.1);
+    border-color: #0088cc;
+}
+
+.social-item.whatsapp {
+    color: #25D366;
+}
+
+.social-item.whatsapp:hover {
+    background: rgba(37, 211, 102, 0.1);
+    border-color: #25D366;
+}
+
+.social-item.twitter {
+    color: #1DA1F2;
+}
+
+.social-item.twitter:hover {
+    background: rgba(29, 161, 242, 0.1);
+    border-color: #1DA1F2;
+}
+
+/* Highlight Card */
+.sidebar-card.highlight {
+    background: linear-gradient(145deg, rgba(57, 255, 20, 0.1), rgba(26, 31, 58, 0.8));
+    border: 2px solid rgba(57, 255, 20, 0.3);
+    text-align: center;
+}
+
+.highlight-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(57, 255, 20, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.highlight-icon i {
+    font-size: 28px;
+    color: #39FF14;
+}
+
+.sidebar-card.highlight h6 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #39FF14;
+    margin-bottom: 10px;
+}
+
+.sidebar-card.highlight p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+/* ==================== 06. Map Section ==================== */
+.map-section {
+    padding: 60px 0;
+    background: rgba(10, 14, 39, 0.5);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.section-description {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.map-wrapper {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    border: 1px solid rgba(57, 255, 20, 0.2);
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 500px;
+    filter: grayscale(30%) contrast(1.1);
+    transition: filter 0.5s;
+}
+
+.map-wrapper:hover iframe {
+    filter: grayscale(0%) contrast(1);
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+}
+
+.btn-directions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    border-radius: 50px;
+    color: #39FF14;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-directions:hover {
+    background: #39FF14;
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* ==================== 07. FAQ Section ==================== */
+.faq-section {
+    padding: 60px 0;
+}
+
+.faq-item {
+    background: rgba(26, 31, 58, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.faq-item:hover {
+    border-color: rgba(57, 255, 20, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.faq-question i {
+    color: #39FF14;
+    font-size: 20px;
+}
+
+.faq-answer {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    padding-right: 32px;
+}
+
+/* ==================== 08. Responsive Design ==================== */
+@media (max-width: 991px) {
+    .page-header-section {
+        min-height: 300px;
+        padding: 150px 0 80px;
+    }
+
+    .contact-info-section {
+        padding-top: 40px;
+        margin-top: -40px;
+    }
+
+    .contact-form-wrapper,
+    .sidebar-card {
+        padding: 30px 20px;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .page-header-section {
+        padding: 130px 0 60px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .info-card {
+        padding: 30px 20px;
+    }
+
+    .map-wrapper iframe {
+        height: 350px;
+    }
+
+    .btn-directions {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+
+    .map-overlay {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 575px) {
+    .contact-form-wrapper {
+        padding: 25px 15px;
+    }
+
+    .form-header h3 {
+        font-size: 22px;
+    }
+
+    .social-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .working-hours .hour-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+/* ==================== 09. Print Styles ==================== */
+@media print {
+    .main-header,
+    .map-section,
+    .faq-section,
+    .sidebar-card,
+    .btn-submit {
+        display: none !important;
+    }
+}

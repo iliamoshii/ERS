@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>تماس با ما | سامانه رزرو استادیوم</title>
+
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+
+    <!-- فونت‌های فارسی -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/popup.css">
+</head>
+
+<body class="contact-page">
+<div class="page-wrapper">
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-container">
+            <div class="football-loader"></div>
+            <p class="loading-text">در حال بارگذاری...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="header">
+        <div class="header-upper">
+            <div class="container">
+                <div class="header-inner d-flex align-items-center justify-content-between">
+                    <div class="logo-outer">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="assets/images/logo.svg" alt="لوگو سامانه رزرو">
+                            </a>
+                        </div>
+                    </div>
+
+                    <nav class="main-menu d-none d-lg-block">
+                        <ul class="navigation">
+                            <li><a href="index.html">صفحه اصلی</a></li>
+                            <li><a href="service.html">رزرو استادیوم</a></li>
+                            <li class="current"><a href="contact_us.html">تماس با ما</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-actions d-flex align-items-center gap-3">
+                        <a href="Form.html" class="theme-btn">
+                            <i class="fas fa-user ms-2"></i>
+                            پنل کاربری
+                        </a>
+                        <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-overlay"></div>
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <nav>
+                <ul class="mobile-navigation">
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="service.html">رزرو استادیوم</a></li>
+                    <li><a href="contact_us.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header-section">
+        <div class="header-bg"></div>
+        <div class="container">
+            <div class="header-content" data-aos="fade-up">
+                <span class="header-badge">
+                    <i class="fas fa-headset"></i>
+                    پشتیبانی ۲۴/۷
+                </span>
+                <h1 class="page-title">
+                    با ما در <span class="highlight">ارتباط</span> باشید
+                </h1>
+                <p class="page-description">
+                    تیم پشتیبانی ما همیشه آماده پاسخگویی به سوالات شماست
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="contact-info-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="info-card">
+                        <div class="icon-wrapper">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h5>تماس تلفنی</h5>
+                        <p>از ساعت ۸ صبح تا ۱۲ شب</p>
+                        <a href="tel:02112345678" class="contact-link">۰۳۱-۱۲۳۴۵۶۷۸</a>
+                        <a href="tel:09123456789" class="contact-link">۰۹۱۳-۳۴۵۶۷۸۹</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-card featured">
+                        <div class="featured-badge">پاسخگویی سریع</div>
+                        <div class="icon-wrapper">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5>ایمیل پشتیبانی</h5>
+                        <p>پاسخ در کمتر از ۲۴ ساعت</p>
+                        <a href="mailto:support@stadium.ir" class="contact-link">support@stadium.ir</a>
+                        <a href="mailto:info@stadium.ir" class="contact-link">info@stadium.ir</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="info-card">
+                        <div class="icon-wrapper">
+                            <div class="icon-bg"></div>
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5>آدرس دفتر</h5>
+                        <p>بازدید با هماهنگی قبلی</p>
+                        <a href="#map" class="contact-link">اصفهان،چهارباغ</a>
+                        <a href="#map" class="contact-link">طبقه ۱۲، واحد ۴</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Contact Section -->
+    <section class="main-contact-section">
+        <div class="container">
+            <div class="row g-5">
+                
+                <!-- Contact Form -->
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="contact-form-wrapper">
+                        <div class="form-header">
+                            <h3>ارسال پیام</h3>
+                            <p>فرم زیر را تکمیل کنید تا با شما تماس بگیریم</p>
+                        </div>
+
+                        <form id="contactForm" class="contact-form">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-user"></i>
+                                            نام و نام خانوادگی
+                                        </label>
+                                        <input 
+                                            type="text" 
+                                            class="form-control-modern" 
+                                            name="name"
+                                            placeholder="علی احمدی"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-phone"></i>
+                                            شماره تماس
+                                        </label>
+                                        <input 
+                                            type="tel" 
+                                            class="form-control-modern" 
+                                            name="phone"
+                                            placeholder="۰۹۱۲۳۴۵۶۷۸۹"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-envelope"></i>
+                                            ایمیل
+                                        </label>
+                                        <input 
+                                            type="email" 
+                                            class="form-control-modern" 
+                                            name="email"
+                                            placeholder="example@email.com"
+                                            required
+                                        >
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-tag"></i>
+                                            موضوع پیام
+                                        </label>
+                                        <select class="form-control-modern" name="subject" required>
+                                            <option value="">انتخاب کنید...</option>
+                                            <option value="booking">رزرو استادیوم</option>
+                                            <option value="payment">مشکلات پرداخت</option>
+                                            <option value="support">پشتیبانی فنی</option>
+                                            <option value="complaint">شکایت</option>
+                                            <option value="suggestion">پیشنهاد</option>
+                                            <option value="other">سایر موارد</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label">
+                                            <i class="fas fa-comment-alt"></i>
+                                            متن پیام
+                                        </label>
+                                        <textarea 
+                                            class="form-control-modern" 
+                                            name="message"
+                                            rows="6"
+                                            placeholder="پیام خود را اینجا بنویسید..."
+                                            required
+                                        ></textarea>
+                                        <div class="char-counter">
+                                            <span id="charCount">0</span> / 500 کاراکتر
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn-submit">
+                                        <span class="btn-text">ارسال پیام</span>
+                                        <span class="btn-icon">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Success Message -->
+                        <div class="alert-success" id="successMessage" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <strong>پیام شما با موفقیت ارسال شد!</strong>
+                                <p>به زودی با شما تماس خواهیم گرفت.</p>
+                            </div>
+                        </div>
+
+                        <!-- Error Message -->
+                        <div class="alert-error" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <div>
+                                <strong>خطا در ارسال پیام</strong>
+                                <p>لطفاً مجدداً تلاش کنید.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info Sidebar -->
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="contact-sidebar">
+                        
+                        <!-- Quick Links -->
+                        <div class="sidebar-card">
+                            <h5>دسترسی سریع</h5>
+                            <div class="quick-links">
+                                <a href="service.html" class="quick-link">
+                                    <i class="fas fa-futbol"></i>
+                                    <span>رزرو استادیوم</span>
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                                <a href="Form.html" class="quick-link">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>پنل کاربری</span>
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                                <a href="#faq" class="quick-link">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>سوالات متداول</span>
+                                    <i class="fas fa-chevron-left"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Working Hours -->
+                        <div class="sidebar-card">
+                            <h5>ساعات کاری</h5>
+                            <div class="working-hours">
+                                <div class="hour-item">
+                                    <span class="day">شنبه تا چهارشنبه</span>
+                                    <span class="time">۸:۰۰ - ۲۰:۰۰</span>
+                                </div>
+                                <div class="hour-item">
+                                    <span class="day">پنج‌شنبه</span>
+                                    <span class="time">۸:۰۰ - ۱۴:۰۰</span>
+                                </div>
+                                <div class="hour-item special">
+                                    <span class="day">جمعه</span>
+                                    <span class="time">تعطیل</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Media -->
+                        <div class="sidebar-card">
+                            <h5>شبکه‌های اجتماعی</h5>
+                            <p class="text-muted small mb-3">ما را در شبکه‌های اجتماعی دنبال کنید</p>
+                            <div class="social-grid">
+                                <a href="#" class="social-item instagram">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="#" class="social-item telegram">
+                                    <i class="fab fa-telegram"></i>
+                                    <span>Telegram</span>
+                                </a>
+                                <a href="#" class="social-item whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>WhatsApp</span>
+                                </a>
+                                <a href="#" class="social-item twitter">
+                                    <i class="fab fa-twitter"></i>
+                                    <span>Twitter</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Response Time -->
+                        <div class="sidebar-card highlight">
+                            <div class="highlight-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h6>پاسخگویی سریع</h6>
+                            <p>میانگین زمان پاسخ ما کمتر از <strong>۲ ساعت</strong> است</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h3 class="section-title">موقعیت ما روی نقشه</h3>
+                <p class="section-description">دفتر مرکزی ما در اصفهان واقع شده است</p>
+            </div>
+
+            <div class="map-wrapper" data-aos="fade-up" data-aos-delay="200">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103632.48398150499!2d51.29415891392651!3d35.7381533519803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e004917344dd9%3A0x7343e6348424c966!2sTehran%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
+                    width="100%" 
+                    height="500" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+                <div class="map-overlay">
+                    <button class="btn-directions">
+                        <i class="fas fa-directions"></i>
+                        <span>مسیریابی</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h3 class="section-title">سوالات متداول</h3>
+                <p class="section-description">پاسخ سوالات رایج در اینجا</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-question-circle"></i>
+                            <span>چگونه می‌توانم رزرو کنم؟</span>
+                        </div>
+                        <div class="faq-answer">
+                            از منوی رزرو استادیوم، زمین مورد نظر خود را انتخاب و تاریخ و ساعت دلخواه را رزرو کنید.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-question-circle"></i>
+                            <span>آیا امکان لغو رزرو وجود دارد؟</span>
+                        </div>
+                        <div class="faq-answer">
+                            بله، تا ۲۴ ساعت قبل از زمان رزرو می‌توانید رزرو خود را لغو کنید.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-question-circle"></i>
+                            <span>روش‌های پرداخت چیست؟</span>
+                        </div>
+                        <div class="faq-answer">
+                            پرداخت آنلاین از طریق درگاه بانکی، کارت به کارت و پرداخت حضوری.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <i class="fas fa-question-circle"></i>
+                            <span>آیا تخفیف گروهی دارید؟</span>
+                        </div>
+                        <div class="faq-answer">
+                            بله، برای رزروهای گروهی و بلندمدت تخفیف‌های ویژه داریم.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <img src="assets/images/logo.svg" alt="لوگو">
+                            </div>
+                            <p class="footer-about">
+                                سامانه پیشرو در خدمات ورزشی و رزرو آنلاین استادیوم‌های کشور.
+                            </p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-telegram"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer-widget">
+                            <h5 class="footer-widget-title">دسترسی سریع</h5>
+                            <ul class="footer-links">
+                                <li><a href="index.html">صفحه اصلی</a></li>
+                                <li><a href="service.html">رزرو استادیوم</a></li>
+                                <li><a href="contact_us.html">تماس با ما</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h5 class="footer-widget-title">خدمات</h5>
+                            <ul class="footer-links">
+                                <li><a href="#">رزرو آنلاین</a></li>
+                                <li><a href="#">اپلیکیشن موبایل</a></li>
+                                <li><a href="#">پشتیبانی ۲۴/۷</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h5 class="footer-widget-title">تماس با ما</h5>
+                            <ul class="footer-contact">
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    <span>۰۳۱-۱۲۳۴۵۶۷۸</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    <span>info@stadium.ir</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright-text">
+                    © ۱۴۰۳ تمام حقوق این وب‌سایت برای سامانه رزرو محفوظ است.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="assets/js/popup.js"></script>
+<script src="assets/js/script.js"></script>
+<script src="assets/js/contact.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>سامانه هوشمند رزرو استادیوم</title>
+
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+
+    <!-- فونت‌های فارسی -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/FontAwesome.Pro.7.1.0/css/all.css">
+    
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Slick Carousel -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css"/>
+    <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+<div class="page-wrapper">
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-container">
+            <div class="football-loader"></div>
+            <p class="loading-text">در حال بارگذاری...</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="header">
+        <div class="header-upper">
+            <div class="container">
+                <div class="header-inner d-flex align-items-center justify-content-between">
+                    <div class="logo-outer">
+                        <div class="logo">
+                            <a href="index.html">
+                                <img src="assets/images/Full-logo.png" alt="لوگو سامانه رزرو" title="سامانه رزرو استادیوم">
+                            </a>
+                        </div>
+                    </div>
+
+                    <nav class="main-menu d-none d-lg-block">
+                        <ul class="navigation">
+                            <li class="current"><a href="#home">صفحه اصلی</a></li>
+                            <li><a href="#services">خدمات</a></li>
+                            <li><a href="#gallery">گالری</a></li>
+                            <li><a href="#faq">سوالات متداول</a></li>
+                            <li><a href="contact_us.html">تماس با ما</a></li>
+                        </ul>
+                    </nav>
+
+                    <div class="header-actions d-flex align-items-center gap-3">
+                        <a href="Form.html" class="theme-btn">
+                            <i class="fas fa-sign-in-alt ms-2"></i>
+                            ورود / ثبت‌نام
+                        </a>
+                        <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-overlay"></div>
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <nav>
+                <ul class="mobile-navigation">
+                    <li><a href="#home">صفحه اصلی</a></li>
+                    <li><a href="#services">خدمات</a></li>
+                    <li><a href="#gallery">گالری</a></li>
+                    <li><a href="#faq">سوالات متداول</a></li>
+                    <li><a href="contact_us.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg-animation"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-content">
+                        <span class="hero-badge">
+                            <i class="fas fa-futbol"></i>
+                            بهترین پلتفرم رزرو ورزشی
+                        </span>
+                        <h1 class="hero-title">
+                            هیجان فوتبال در 
+                            <span class="neon-highlight">چمن مصنوعی‌های مدرن</span>
+                        </h1>
+                        <p class="hero-description">
+                            با سامانه هوشمند ما، بهترین زمین‌های چمن و سالن‌های ورزشی شهر را مشاهده، مقایسه و در کمترین زمان رزرو کنید.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">۱۵۰+</div>
+                                <div class="stat-label">استادیوم فعال</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">۱۲۰۰+</div>
+                                <div class="stat-label">رزرو روزانه</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">۹۸٪</div>
+                                <div class="stat-label">رضایت کاربران</div>
+                            </div>
+                        </div>
+                        <div class="hero-btns">
+                            <a href="service.html" class="theme-btn btn-lg">
+                                <i class="fas fa-search ms-2"></i>
+                                همین حالا زمین انتخاب کن
+                            </a>
+                            <a href="#services" class="outline-btn btn-lg">
+                                <i class="fas fa-info-circle ms-2"></i>
+                                بیشتر بدانید
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="hero-animation">
+                        <div class="animation-wrapper">
+                            <lottie-player
+                                src="assets/js/Football team players.json"
+                                background="transparent"
+                                speed="1"
+                                style="width: 100%; height: 100%;"
+                                loop
+                                autoplay>
+                            </lottie-player>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <img src="assets/images/ball.svg" alt="توپ" class="floating-ball ball-1">
+            <img src="assets/images/189795610-referee-flag-removebg-preview.png" alt="پرچم" class="floating-item item-1">
+            <img src="assets/images/football-shoes-soccer-ball-icon-600nw-2227251085-removebg-preview.png" alt="کفش" class="floating-item item-2">
+            <img src="assets/images/338541-200.png" alt="دروازه‌بان" class="floating-item item-3">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="service-section">
+        <div class="container">
+            <div class="section-heading text-center" data-aos="fade-up">
+                <span class="section-subtitle">چرا ما؟</span>
+                <h2 class="section-title">ویژگی‌های سامانه رزرو</h2>
+                <p class="section-description">تجربه‌ای متفاوت در رزرو آنلاین زمین‌های ورزشی</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="icon-bg"></div>
+                        </div>
+                        <h5 class="service-title">رزرو آنی</h5>
+                        <p class="service-description">
+                            بدون نیاز به تماس تلفنی، چمن مصنوعی مورد نظر خود را در لحظه رزرو کنید.
+                        </p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>۲۴ ساعته در دسترس</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>تایید فوری رزرو</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card featured">
+                        <div class="featured-badge">محبوب‌ترین</div>
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="icon-bg"></div>
+                        </div>
+                        <h5 class="service-title">نورافکن استاندارد</h5>
+                        <p class="service-description">
+                            تمامی زمین‌های طرف قرارداد دارای سیستم روشنایی نئون و استاندارد هستند.
+                        </p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>روشنایی حرفه‌ای</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>کیفیت تضمین شده</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="icon-bg"></div>
+                        </div>
+                        <h5 class="service-title">اپلیکیشن همراه</h5>
+                        <p class="service-description">
+                            مدیریت رزروها و لغو سانس‌ها به راحتی از طریق موبایل امکان‌پذیر است.
+                        </p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>اپلیکیشن اندروید و iOS</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check"></i>
+                                <span>رابط کاربری ساده</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="counter-section">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="counter-card">
+                        <div class="counter-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="counter-number" data-count="150">۰</h3>
+                        <p class="counter-label">استادیوم فعال</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="counter-card">
+                        <div class="counter-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="counter-number" data-count="1200">۰</h3>
+                        <p class="counter-label">رزرو هفتگی</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="counter-card">
+                        <div class="counter-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="counter-number" data-count="45">۰</h3>
+                        <p class="counter-label">تیم ثبت شده</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="counter-card">
+                        <div class="counter-icon">
+                            <i class="fas fa-smile"></i>
+                        </div>
+                        <h3 class="counter-number" data-count="98">۰</h3>
+                        <p class="counter-label">رضایت کاربران</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="stadium-gallery" id="gallery">
+        <div class="container">
+            <div class="section-heading text-center" data-aos="fade-up">
+                <span class="section-subtitle">گالری تصاویر</span>
+                <h2 class="section-title">نمای داخلی مجموعه‌ها</h2>
+                <p class="section-description">نگاهی به بهترین زمین‌های چمن مصنوعی شهر</p>
+            </div>
+        </div>
+        <div class="container-fluid" data-aos="fade-up" data-aos-delay="200">
+            <div class="gallery-carousel">
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/images/byaDYZ9N4NAJWPwRoGDSMlypiwnYryG7u1tC7uAW.jpg" alt="استادیوم ۱">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h5>زمین چمن مدرن</h5>
+                                <p>استاندارد FIFA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/images/2864705.jpg" alt="استادیوم ۲">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h5>سالن ورزشی کامل</h5>
+                                <p>تجهیزات حرفه‌ای</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/images/nlsHXqmPbPr7EEYZFnUjtpSoWTgTKZhO4Poz7l4L.jpg" alt="استادیوم ۳">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h5>زمین فوتبال شش نفره</h5>
+                                <p>روشنایی استاندارد</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/images/1624252051_0a-3b7adfa465f6.jpg" alt="استادیوم ۴">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h5>مجموعه ورزشی VIP</h5>
+                                <p>امکانات ویژه</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="assets/images/1698404764_-10-27_13-22-30.jpg" alt="استادیوم ۵">
+                        <div class="gallery-overlay">
+                            <div class="gallery-content">
+                                <h5>زمین چمن سرپوشیده</h5>
+                                <p>مناسب تمام فصول</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="faq-content">
+                        <div class="section-heading">
+                            <span class="section-subtitle">سوالات متداول</span>
+                            <h2 class="section-title">پاسخ سوالات شما</h2>
+                        </div>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        <i class="fas fa-question-circle ms-2"></i>
+                                        چگونه بلیط رزرو خود را لغو کنم؟
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        تا ۲۴ساعت قبل از شروع بازی می‌توانید از پنل کاربری رزرو خود را لغو کنید. پس از لغو، مبلغ به کیف پول شما برگشت داده می‌شود.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        <i class="fas fa-question-circle ms-2"></i>
+                                        آیا امکان اجاره تجهیزات وجود دارد؟
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        بله، در اکثر مجموعه‌ها امکان اجاره کفش و توپ فراهم شده است. هزینه اجاره به صورت جداگانه محاسبه می‌شود.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        <i class="fas fa-question-circle ms-2"></i>
+                                        روش‌های پرداخت چیست؟
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        می‌توانید از طریق درگاه‌های بانکی، کیف پول الکترونیک یا پرداخت حضوری هزینه رزرو را پرداخت کنید.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                        <i class="fas fa-question-circle ms-2"></i>
+                                        آیا امکان رزرو گروهی وجود دارد؟
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        بله، شما می‌توانید برای تیم خود رزرو‌های متعدد انجام دهید و از تخفیف‌های ویژه گروهی بهره‌مند شوید.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+                    <div class="faq-animation">
+                        <lottie-player 
+                            src="https://lottie.host/0188ef0d-8a1e-4e03-be35-35ab90cb98a0/iZlfRqm0kg.json"
+                            background="transparent"
+                            speed="1"
+                            style="width: 100%; height: 100%;"
+                            loop 
+                            autoplay>
+                        </lottie-player>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-wrapper" data-aos="zoom-in">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h2 class="cta-title">آماده شروع هستید؟</h2>
+                        <p class="cta-description">همین الان زمین دلخواه خود را رزرو کنید و از بازی لذت ببرید</p>
+                    </div>
+                    <div class="col-lg-4 text-end">
+                        <a href="service.html" class="theme-btn btn-lg">
+                            <i class="fas fa-rocket ms-2"></i>
+                            رزرو آنلاین
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <img src="assets/images/Full-logo.png" alt="لوگو">
+                            </div>
+                            <p class="footer-about">
+                                سامانه پیشرو در خدمات ورزشی و رزرو آنلاین استادیوم‌های کشور. ما به شما کمک می‌کنیم تا بهترین تجربه ورزشی را داشته باشید.
+                            </p>
+                            <div class="social-links">
+                                <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                                <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="واتساپ"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="footer-widget">
+                            <h5 class="footer-widget-title">دسترسی سریع</h5>
+                            <ul class="footer-links">
+                                <li><a href="#home">صفحه اصلی</a></li>
+                                <li><a href="#services">خدمات</a></li>
+                                <li><a href="#gallery">گالری</a></li>
+                                <li><a href="#faq">سوالات متداول</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h5 class="footer-widget-title">خدمات ما</h5>
+                            <ul class="footer-links">
+                                <li><a href="service.html">رزرو آنلاین</a></li>
+                                <li><a href="#">اپلیکیشن موبایل</a></li>
+                                <li><a href="#">پشتیبانی ۲۴/۷</a></li>
+                                <li><a href="#">تخفیف‌های ویژه</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget">
+                            <h5 class="footer-widget-title">تماس با ما</h5>
+                            <ul class="footer-contact">
+                                <li>
+                                    <i class="fas fa-phone"></i>
+                                    <span>۰۳۱-۱۲۳۴۵۶۷۸</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    <span>info@stadium.ir</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>اصفهان،چهارباغ</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright-text">
+                            © ۱۴۰۳ تمام حقوق این وب‌سایت برای سامانه رزرو محفوظ است.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div class="footer-bottom-links">
+                            <a href="#">حریم خصوصی</a>
+                            <a href="#">شرایط استفاده</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" aria-label="بازگشت به بالا">
+    <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- Scripts -->
+<script src="assets/js/jquery-3.6.0.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/slick.min.js"></script>
+<script src="assets/js/aos.js"></script>
+<script src="assets/js/lottie-player.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
