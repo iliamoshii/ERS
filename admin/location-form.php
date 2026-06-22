@@ -40,8 +40,8 @@ if ($mode === 'edit') {
 $v = fn(string $key, $default = '') => $e($location[$key] ?? $default);
 
 $surfaceLabels = [
-        'artificial' => 'چمن مصنوعی', 'natural' => 'چمن طبیعی',
-        'indoor'     => 'سرپوشیده',   'outdoor' => 'روباز',
+    'artificial' => 'چمن مصنوعی', 'natural' => 'چمن طبیعی',
+    'indoor'     => 'سرپوشیده',   'outdoor' => 'روباز',
 ];
 
 $pageTitle = $mode === 'edit' ? 'ویرایش مکان' : 'افزودن مکان جدید';
@@ -104,7 +104,7 @@ $pageTitle = $mode === 'edit' ? 'ویرایش مکان' : 'افزودن مکان
                                     <option value="">انتخاب کنید...</option>
                                     <?php foreach ($categories as $c): ?>
                                         <option value="<?= (int) $c['id'] ?>"
-                                                <?= ($location['category_id'] ?? null) == $c['id'] ? 'selected' : '' ?>>
+                                            <?= ($location['category_id'] ?? null) == $c['id'] ? 'selected' : '' ?>>
                                             <?= $e($c['name']) ?>
                                         </option>
                                     <?php endforeach; ?>
@@ -169,7 +169,7 @@ $pageTitle = $mode === 'edit' ? 'ویرایش مکان' : 'افزودن مکان
                             </div>
                         </div>
 
-                        <button type="submit" class="theme-btn submit-btn">
+                        <button type="submit" class="btn btn-success">
                             <span class="btn-text">ذخیره مکان</span>
                             <span class="btn-icon"><i class="fas fa-save"></i></span>
                         </button>
@@ -177,17 +177,20 @@ $pageTitle = $mode === 'edit' ? 'ویرایش مکان' : 'افزودن مکان
                 </div>
             </div>
 
-            <?php if ($mode === 'edit'): ?>
-                <div class="panel-card">
-                    <div class="panel-card-header">
-                        <h6><i class="fas fa-images"></i> گالری تصاویر</h6>
-                    </div>
-                    <div class="panel-card-body">
+            <!-- Image gallery panel: always visible. In create mode it is shown disabled with instructions. -->
+            <div class="panel-card">
+                <div class="panel-card-header">
+                    <h6><i class="fas fa-images"></i> گالری تصاویر</h6>
+                </div>
+                <div class="panel-card-body">
+                    <?php if ($mode === 'edit'): ?>
+                        <!-- In edit mode: label references the hidden-by-CSS file input. Clicking the label opens the file picker. -->
                         <label class="image-upload-zone" for="imageUploadInput">
                             <i class="fas fa-cloud-upload-alt"></i>
                             <p>برای آپلود تصویر جدید کلیک کنید (JPG، PNG یا WebP — حداکثر ۵ مگابایت)</p>
-                            <input type="file" id="imageUploadInput" accept="image/jpeg,image/png,image/webp" hidden>
                         </label>
+                        <!-- visually hidden (display:none) input — DO NOT use the HTML 'hidden' attribute -->
+                        <input type="file" id="imageUploadInput" accept="image/jpeg,image/png,image/webp" style="display:none;">
 
                         <div id="imageGrid" class="mt-3">
                             <?php if (empty($images)): ?>
@@ -223,9 +226,24 @@ $pageTitle = $mode === 'edit' ? 'ویرایش مکان' : 'افزودن مکان
                                 </div>
                             <?php endif; ?>
                         </div>
-                    </div>
+                    <?php else: ?>
+                        <!-- Create mode: show upload zone but DO NOT reference the input so clicking doesn't try to open picker.
+                             The input is present but disabled, and the zone instructs the admin to save first. -->
+                        <label class="image-upload-zone disabled" style="cursor:default;">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>برای اضافه کردن تصاویر، ابتدا اطلاعات مکان را ذخیره کنید. بعد از ذخیره، صفحه دوباره بارگذاری شده و آپلود تصاویر فعال می‌شود.</p>
+                        </label>
+                        <input type="file" id="imageUploadInput" accept="image/jpeg,image/png,image/webp" style="display:none;" disabled>
+
+                        <div id="imageGrid" class="mt-3">
+                            <div class="empty-state">
+                                <i class="fas fa-images"></i>
+                                <p>بعد از ذخیرهٔ مکان، می‌توانید تصاویر را اینجا آپلود و مدیریت کنید.</p>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            </div>
 
         </main>
     </div>
@@ -242,6 +260,8 @@ $pageTitle = $mode === 'edit' ? 'ویرایش مکان' : 'افزودن مکان
 <script src="../assets/js/admin-panel.js"></script>
 <script>
     const CSRF_TOKEN = '<?= CSRF::token() ?>';
+    // If admin-panel.js binds the click to the label or the #imageUploadInput, this will continue to work.
+    // Ensure admin-panel.js listens for change on #imageUploadInput and uploads the selected file.
 </script>
 </body>
 </html>
