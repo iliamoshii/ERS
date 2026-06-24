@@ -185,7 +185,7 @@ $e = fn($v) => R::e($v);
                     <div class="panel-card-header">
                         <h6><i class="fas fa-bell ms-2"></i> اعلان‌ها</h6>
                         <?php if ($unreadCount > 0): ?>
-                            <button class="btn-link" id="markAllReadBtn">خواندن همه</button>
+                            <button class="btn btn-link" id="markAllReadBtn">خواندن همه</button>
                         <?php endif; ?>
                     </div>
                     <div class="panel-card-body notif-list">

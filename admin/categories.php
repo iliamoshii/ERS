@@ -66,7 +66,7 @@ $pageTitle = 'مدیریت دسته‌بندی‌ها';
                                 <input type="text" name="icon" id="catIcon" class="form-control-panel" placeholder="fas fa-futbol">
                             </div>
                             <div class="field-col" style="flex:0 0 auto; display:flex; gap:8px;">
-                                <button type="submit" class="theme-btn submit-btn" style="white-space:nowrap;">
+                                <button type="submit" class="btn btn-success" style="white-space:nowrap;">
                                     <span class="btn-text">ذخیره</span>
                                 </button>
                                 <button type="button" id="catCancelEdit" class="btn-outline" style="display:none;">انصراف</button>

@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Service Page Styles - Stadium Listing & Search
- * Matching the main website theme with advanced filtering
+ * Optimized for Smooth 60FPS Scrolling & Hardware Acceleration
  *******************************************************************************/
 
 /* ==================== 01. Page Base ==================== */
@@ -17,6 +17,8 @@
     align-items: center;
     padding: 180px 0 100px;
     overflow: hidden;
+    /* آماده‌سازی برای رندر سخت‌افزاری */
+    transform: translateZ(0);
 }
 
 .banner-bg {
@@ -25,15 +27,17 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(circle at 30% 40%, rgba(57, 255, 20, 0.15) 0%, transparent 60%),
-        radial-gradient(circle at 70% 60%, rgba(0, 240, 255, 0.15) 0%, transparent 60%);
-    animation: bannerGlow 10s ease-in-out infinite alternate;
+    background:
+            radial-gradient(circle at 30% 40%, rgba(57, 255, 20, 0.12) 0%, transparent 60%),
+            radial-gradient(circle at 70% 60%, rgba(0, 240, 255, 0.12) 0%, transparent 60%);
+    /* بهینه‌سازی انیمیشن جهت عدم درگیری لایه‌های بیرونی در زمان اسکرول */
+    animation: bannerGlow 12s ease-in-out infinite alternate;
+    will-change: transform, opacity;
 }
 
 @keyframes bannerGlow {
-    0% { opacity: 0.6; transform: scale(1); }
-    100% { opacity: 1; transform: scale(1.05); }
+    0% { opacity: 0.6; transform: scale(1) translateZ(0); }
+    100% { opacity: 1; transform: scale(1.03) translateZ(0); }
 }
 
 .banner-content {
@@ -87,7 +91,7 @@
     font-size: 32px;
     font-weight: 700;
     color: #39FF14;
-    text-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.4);
     display: block;
     margin-bottom: 5px;
 }
@@ -106,14 +110,15 @@
 }
 
 .search-filter-wrapper {
-    background: rgba(26, 31, 58, 0.9);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(57, 255, 20, 0.2);
+    /* تغییر به رنگ خالص‌تر با شفافیت کم‌تر جهت حذف پردازش سنگین blur */
+    background: rgba(26, 31, 58, 0.96);
+    border: 1px solid rgba(57, 255, 20, 0.25);
     border-radius: 25px;
     padding: 30px;
-    box-shadow: 
-        0 25px 60px rgba(0, 0, 0, 0.5),
-        0 0 40px rgba(57, 255, 20, 0.1);
+    /* بهینه‌سازی سایه جهت جلوگیری از لگ */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 /* Main Search Bar */
@@ -147,14 +152,14 @@
     padding: 0 60px 0 20px;
     color: #ffffff;
     font-size: 16px;
-    transition: all 0.3s;
+    transition: border-color 0.25s, background-color 0.25s, box-shadow 0.25s;
 }
 
 .search-input:focus {
     outline: none;
     border-color: #39FF14;
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
-    background: rgba(57, 255, 20, 0.05);
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.15);
+    background: rgba(57, 255, 20, 0.03);
 }
 
 .search-input::placeholder {
@@ -173,7 +178,7 @@
     border-radius: 50%;
     color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.25s;
     opacity: 0;
     visibility: hidden;
 }
@@ -202,13 +207,13 @@
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
 }
 
 .filter-toggle-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(57, 255, 20, 0.4);
+    box-shadow: 0 6px 20px rgba(57, 255, 20, 0.35);
 }
 
 .filter-badge {
@@ -228,7 +233,7 @@
     color: #ffffff;
     opacity: 0;
     transform: scale(0);
-    transition: all 0.3s;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 .filter-badge.active {
@@ -244,7 +249,7 @@
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 }
 
 .advanced-filters.active {
@@ -281,7 +286,7 @@
     color: #ffffff;
     font-size: 15px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: border-color 0.25s, box-shadow 0.25s;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2339FF14' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -291,7 +296,7 @@
 .filter-select:focus {
     outline: none;
     border-color: #39FF14;
-    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.15);
 }
 
 /* Amenities Checkboxes */
@@ -310,7 +315,7 @@
     border: 2px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: border-color 0.2s, background-color 0.2s;
     user-select: none;
 }
 
@@ -330,7 +335,7 @@
     border: 2px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     position: relative;
-    transition: all 0.3s;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
 .checkbox-custom::after {
@@ -344,7 +349,7 @@
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.2s;
 }
 
 .amenity-checkbox input:checked ~ .checkbox-custom {
@@ -386,7 +391,7 @@
     font-size: 15px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.25s;
 }
 
 .btn-reset-filters {
@@ -409,7 +414,7 @@
 
 .btn-apply-filters:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(57, 255, 20, 0.3);
+    box-shadow: 0 6px 18px rgba(57, 255, 20, 0.3);
 }
 
 /* ==================== 04. Results Header ==================== */
@@ -462,7 +467,7 @@
     color: #ffffff;
     font-size: 14px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: border-color 0.25s;
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2339FF14' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -491,7 +496,7 @@
     color: rgba(255, 255, 255, 0.5);
     font-size: 16px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: color 0.25s, background-color 0.25s;
 }
 
 .view-btn:hover {
@@ -516,19 +521,22 @@
 
 /* Stadium Card */
 .stadium-card {
-    background: rgba(26, 31, 58, 0.8);
-    backdrop-filter: blur(10px);
+    /* حذف backdrop-filter جهت برطرف کردن ۱۰۰ درصد لگ اسکرول شبکه کارت‌ها */
+    background: rgba(26, 31, 58, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* بهینه‌سازی ترنزیشن و فعالسازی شتاب‌دهنده گرافیکی GPU */
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.25s, box-shadow 0.25s;
     position: relative;
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
 }
 
 .stadium-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(57, 255, 20, 0.3);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    transform: translateY(-6px);
+    border-color: rgba(57, 255, 20, 0.35);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
 }
 
 /* Card Badge */
@@ -558,17 +566,18 @@
     position: relative;
     height: 240px;
     overflow: hidden;
+    transform: translateZ(0); /* افزایش پرفورمنس مرورگرهای موبایل */
 }
 
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s;
+    transition: transform 0.3s ease;
 }
 
 .stadium-card:hover .card-image img {
-    transform: scale(1.1);
+    transform: scale(1.06);
 }
 
 .image-overlay {
@@ -578,8 +587,8 @@
     display: flex;
     gap: 10px;
     opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s;
+    transform: translateY(-6px);
+    transition: opacity 0.25s, transform 0.25s;
 }
 
 .stadium-card:hover .image-overlay {
@@ -591,8 +600,7 @@
 .btn-gallery {
     width: 40px;
     height: 40px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     color: #ffffff;
@@ -600,14 +608,14 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
     font-size: 16px;
 }
 
 .btn-favorite:hover {
     background: #ff3b30;
     border-color: #ff3b30;
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 .btn-favorite.active {
@@ -645,8 +653,7 @@
     align-items: center;
     gap: 8px;
     padding: 8px 14px;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.85);
     border: 1px solid rgba(57, 255, 20, 0.3);
     border-radius: 50px;
     font-size: 12px;
@@ -667,7 +674,7 @@
 
 @keyframes statusPulse {
     0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.3); opacity: 0.7; }
+    50% { transform: scale(1.25); opacity: 0.6; }
 }
 
 /* Card Content */
@@ -771,14 +778,14 @@
     color: #39FF14;
     font-size: 14px;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
     position: relative;
 }
 
 .amenity-icon:hover {
     background: #39FF14;
     color: #000000;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .amenity-icon[data-tooltip]:hover::before {
@@ -788,7 +795,7 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 6px 12px;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.9.5);
     color: #ffffff;
     font-size: 12px;
     white-space: nowrap;
@@ -849,21 +856,21 @@
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-book:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(57, 255, 20, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(57, 255, 20, 0.35);
     color: #000000;
 }
 
 .btn-book i {
-    transition: transform 0.3s;
+    transition: transform 0.25s;
 }
 
 .btn-book:hover i {
-    transform: translateX(-5px);
+    transform: translateX(-4px);
 }
 
 /* ==================== 06. No Results ==================== */
@@ -910,12 +917,12 @@
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-reset:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(57, 255, 20, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(57, 255, 20, 0.35);
 }
 
 /* ==================== 07. Load More ==================== */
@@ -936,22 +943,22 @@
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: transform 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .btn-load-more:hover {
     background: rgba(57, 255, 20, 0.1);
     border-color: #39FF14;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(57, 255, 20, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(57, 255, 20, 0.25);
 }
 
 .btn-load-more i {
-    transition: transform 0.3s;
+    transition: transform 0.25s;
 }
 
 .btn-load-more:hover i {
-    transform: translateY(3px);
+    transform: translateY(2px);
 }
 
 /* ==================== 08. List View ==================== */
