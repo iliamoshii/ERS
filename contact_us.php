@@ -1,3 +1,12 @@
+<?php
+// فراخوانی هسته سیستم برای بررسی وضعیت ورود
+require_once __DIR__ . '/backend/bootstrap.php';
+use Core\Auth;
+
+$isLoggedIn = Auth::check();
+$isAdmin = $isLoggedIn ? Auth::isAdmin() : false;
+$currentUser = $isLoggedIn ? Auth::user() : null;
+?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -10,16 +19,16 @@
 
     <!-- فونت‌های فارسی -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/contact.css">
@@ -44,7 +53,7 @@
                 <div class="header-inner d-flex align-items-center justify-content-between">
                     <div class="logo-outer">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="assets/images/logo.svg" alt="لوگو سامانه رزرو">
                             </a>
                         </div>
@@ -52,17 +61,33 @@
 
                     <nav class="main-menu d-none d-lg-block">
                         <ul class="navigation">
-                            <li><a href="index.html">صفحه اصلی</a></li>
-                            <li><a href="service.html">رزرو استادیوم</a></li>
-                            <li class="current"><a href="contact_us.html">تماس با ما</a></li>
+                            <li><a href="index.php">صفحه اصلی</a></li>
+                            <li><a href="service.php">رزرو استادیوم</a></li>
+                            <li class="current"><a href="contact_us.php">تماس با ما</a></li>
                         </ul>
                     </nav>
 
                     <div class="header-actions d-flex align-items-center gap-3">
-                        <a href="Form.html" class="theme-btn">
-                            <i class="fas fa-user ms-2"></i>
-                            پنل کاربری
-                        </a>
+                        <!-- 🌟 دکمه داینامیک ورود / پنل کاربری بر اساس وضعیت لاگین -->
+                        <?php if ($isLoggedIn): ?>
+                            <?php if ($isAdmin): ?>
+                                <a href="admin/dashboard.php" class="theme-btn" id="userPanelLink">
+                                    <i class="fas fa-user-shield ms-2"></i>
+                                    پنل مدیریت
+                                </a>
+                            <?php else: ?>
+                                <a href="user/dashboard.php" class="theme-btn" id="userPanelLink">
+                                    <i class="fas fa-user ms-2"></i>
+                                    <?= htmlspecialchars(mb_substr($currentUser['full_name'], 0, 15)) ?>
+                                </a>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <a href="Form.php" class="theme-btn" id="userPanelLink">
+                                <i class="fas fa-sign-in-alt ms-2"></i>
+                                ورود / ثبت‌نام
+                            </a>
+                        <?php endif; ?>
+
                         <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle">
                             <span></span>
                             <span></span>
@@ -83,9 +108,9 @@
             </button>
             <nav>
                 <ul class="mobile-navigation">
-                    <li><a href="index.html">صفحه اصلی</a></li>
-                    <li><a href="service.html">رزرو استادیوم</a></li>
-                    <li><a href="contact_us.html">تماس با ما</a></li>
+                    <li><a href="index.php">صفحه اصلی</a></li>
+                    <li><a href="service.php">رزرو استادیوم</a></li>
+                    <li><a href="contact_us.php">تماس با ما</a></li>
                 </ul>
             </nav>
         </div>
@@ -161,7 +186,7 @@
     <section class="main-contact-section">
         <div class="container">
             <div class="row g-5">
-                
+
                 <!-- Contact Form -->
                 <div class="col-lg-7" data-aos="fade-right">
                     <div class="contact-form-wrapper">
@@ -178,9 +203,9 @@
                                             <i class="fas fa-user"></i>
                                             نام و نام خانوادگی
                                         </label>
-                                        <input 
-                                            type="text" 
-                                            class="form-control-modern" 
+                                        <input
+                                            type="text"
+                                            class="form-control-modern"
                                             name="name"
                                             placeholder="علی احمدی"
                                             required
@@ -194,9 +219,9 @@
                                             <i class="fas fa-phone"></i>
                                             شماره تماس
                                         </label>
-                                        <input 
-                                            type="tel" 
-                                            class="form-control-modern" 
+                                        <input
+                                            type="tel"
+                                            class="form-control-modern"
                                             name="phone"
                                             placeholder="۰۹۱۲۳۴۵۶۷۸۹"
                                             required
@@ -210,9 +235,9 @@
                                             <i class="fas fa-envelope"></i>
                                             ایمیل
                                         </label>
-                                        <input 
-                                            type="email" 
-                                            class="form-control-modern" 
+                                        <input
+                                            type="email"
+                                            class="form-control-modern"
                                             name="email"
                                             placeholder="example@email.com"
                                             required
@@ -244,8 +269,8 @@
                                             <i class="fas fa-comment-alt"></i>
                                             متن پیام
                                         </label>
-                                        <textarea 
-                                            class="form-control-modern" 
+                                        <textarea
+                                            class="form-control-modern"
                                             name="message"
                                             rows="6"
                                             placeholder="پیام خود را اینجا بنویسید..."
@@ -291,19 +316,19 @@
                 <!-- Contact Info Sidebar -->
                 <div class="col-lg-5" data-aos="fade-left">
                     <div class="contact-sidebar">
-                        
+
                         <!-- Quick Links -->
                         <div class="sidebar-card">
                             <h5>دسترسی سریع</h5>
                             <div class="quick-links">
-                                <a href="service.html" class="quick-link">
+                                <a href="service.php" class="quick-link">
                                     <i class="fas fa-futbol"></i>
                                     <span>رزرو استادیوم</span>
                                     <i class="fas fa-chevron-left"></i>
                                 </a>
-                                <a href="Form.html" class="quick-link">
+                                <a href="Form.php" class="quick-link">
                                     <i class="fas fa-user-circle"></i>
-                                    <span>پنل کاربری</span>
+                                    <span>ورود / پنل کاربری</span>
                                     <i class="fas fa-chevron-left"></i>
                                 </a>
                                 <a href="#faq" class="quick-link">
@@ -384,10 +409,10 @@
             <div class="map-wrapper" data-aos="fade-up" data-aos-delay="200">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d103632.48398150499!2d51.29415891392651!3d35.7381533519803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8e004917344dd9%3A0x7343e6348424c966!2sTehran%2C%20Tehran%20Province%2C%20Iran!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
-                    width="100%" 
-                    height="500" 
-                    style="border:0;" 
-                    allowfullscreen="" 
+                    width="100%"
+                    height="500"
+                    style="border:0;"
+                    allowfullscreen=""
                     loading="lazy">
                 </iframe>
                 <div class="map-overlay">
@@ -457,7 +482,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+    </section>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -484,9 +509,9 @@
                         <div class="footer-widget">
                             <h5 class="footer-widget-title">دسترسی سریع</h5>
                             <ul class="footer-links">
-                                <li><a href="index.html">صفحه اصلی</a></li>
-                                <li><a href="service.html">رزرو استادیوم</a></li>
-                                <li><a href="contact_us.html">تماس با ما</a></li>
+                                <li><a href="index.php">صفحه اصلی</a></li>
+                                <li><a href="service.php">رزرو استادیوم</a></li>
+                                <li><a href="contact_us.php">تماس با ما</a></li>
                             </ul>
                         </div>
                     </div>
@@ -494,7 +519,7 @@
                         <div class="footer-widget">
                             <h5 class="footer-widget-title">خدمات</h5>
                             <ul class="footer-links">
-                                <li><a href="#">رزرو آنلاین</a></li>
+                                <li><a href="service.php">رزرو آنلاین</a></li>
                                 <li><a href="#">اپلیکیشن موبایل</a></li>
                                 <li><a href="#">پشتیبانی ۲۴/۷</a></li>
                             </ul>

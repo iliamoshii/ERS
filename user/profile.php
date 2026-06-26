@@ -1,27 +1,27 @@
 <?php
+/**
+ * User Panel — Profile Management
+ */
+
 require_once dirname(__DIR__) . '/backend/bootstrap.php';
 
 use Core\Auth;
 use Core\CSRF;
-use Core\Response as R;
+use Core\Response;
 use Middleware\AuthMiddleware;
-use Models\User;
 
+// دسترسی فقط برای کاربران لاگین شده
 AuthMiddleware::requireLogin();
 
-$user      = Auth::user();
-$userModel = new User();
-$fullUser  = $userModel->findById($user['id']);
-
-$e         = fn($v) => R::e($v);
-$pageTitle = 'پروفایل من';
+$user = Auth::user();
+$e = fn($v) => Response::e($v);
 ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>پروفایل | سامانه رزرو استادیوم</title>
+    <title>پروفایل کاربری | سامانه رزرو استادیوم</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/FontAwesome.Pro.7.1.0/css/all.css">
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -34,151 +34,99 @@ $pageTitle = 'پروفایل من';
 <?php include __DIR__ . '/partials/sidebar.php'; ?>
 
 <div class="panel-main" id="panelMain">
+
     <?php include __DIR__ . '/partials/topbar.php'; ?>
 
     <div class="panel-content">
 
-        <div class="row g-4">
-
-            <!-- ── Profile Info Card ── -->
-            <div class="col-lg-4">
-                <div class="panel-card text-center">
-                    <div class="panel-card-body">
-
-                        <!-- Avatar -->
-                        <div class="profile-avatar-wrap">
-                            <?php if ($fullUser['avatar']): ?>
-                                <img src="../<?= $e($fullUser['avatar']) ?>"
-                                     alt="آواتار" class="profile-avatar" id="avatarPreview">
-                            <?php else: ?>
-                                <div class="profile-avatar-placeholder" id="avatarPreview">
-                                    <?= mb_substr($fullUser['full_name'], 0, 1) ?>
-                                </div>
-                            <?php endif; ?>
-
-                            <label class="avatar-upload-btn" for="avatarInput" title="تغییر تصویر">
-                                <i class="fas fa-camera"></i>
-                            </label>
-                            <input type="file" id="avatarInput" class="d-none"
-                                   accept="image/jpeg,image/png,image/webp">
-                        </div>
-
-                        <h5 class="mt-3 mb-1"><?= $e($fullUser['full_name']) ?></h5>
-                        <p class="text-muted mb-3">@<?= $e($fullUser['username']) ?></p>
-
-                        <div class="profile-meta">
-                            <div class="meta-item">
-                                <i class="fas fa-phone"></i>
-                                <span><?= $e($fullUser['phone']) ?></span>
-                            </div>
-                            <?php if ($fullUser['email']): ?>
-                                <div class="meta-item">
-                                    <i class="fas fa-envelope"></i>
-                                    <span><?= $e($fullUser['email']) ?></span>
-                                </div>
-                            <?php endif; ?>
-                            <div class="meta-item">
-                                <i class="fas fa-calendar-plus"></i>
-                                <span>عضو از <?= date('Y/m/d', strtotime($fullUser['created_at'])) ?></span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+        <div class="page-header">
+            <h1>تنظیمات پروفایل</h1>
+            <div class="breadcrumb-nav">
+                <a href="dashboard.php">داشبورد</a>
+                <i class="fas fa-chevron-left"></i>
+                <span>پروفایل</span>
             </div>
+        </div>
 
-            <!-- ── Edit Forms ── -->
-            <div class="col-lg-8">
-
-                <!-- Edit Profile -->
-                <div class="panel-card mb-4">
-                    <div class="panel-card-header">
-                        <h6><i class="fas fa-user-edit ms-2"></i> ویرایش اطلاعات</h6>
-                    </div>
-                    <div class="panel-card-body">
-                        <form id="profileForm" novalidate>
-                            <input type="hidden" name="csrf_token"
-                                   value="<?= CSRF::token() ?>">
-                            <input type="hidden" name="action" value="update_profile">
-
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <label class="form-label-panel">نام و نام خانوادگی</label>
-                                    <input type="text" name="full_name"
-                                           class="form-control-panel"
-                                           value="<?= $e($fullUser['full_name']) ?>"
-                                           required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label-panel">نام کاربری</label>
-                                    <input type="text" name="username"
-                                           class="form-control-panel"
-                                           value="<?= $e($fullUser['username']) ?>"
-                                           readonly disabled>
-                                    <small class="text-muted">نام کاربری قابل تغییر نیست.</small>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label-panel">شماره موبایل</label>
-                                    <input type="tel" name="phone"
-                                           class="form-control-panel"
-                                           value="<?= $e($fullUser['phone']) ?>"
-                                           required>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label-panel">ایمیل (اختیاری)</label>
-                                    <input type="email" name="email"
-                                           class="form-control-panel"
-                                           value="<?= $e($fullUser['email'] ?? '') ?>">
-                                </div>
-                            </div>
-
-                            <button type="submit" class="theme-btn btn-sm mt-3" id="profileBtn">
-                                <i class="fas fa-save ms-2"></i> ذخیره تغییرات
-                            </button>
-                        </form>
-                    </div>
-                </div>
-
-                <!-- Change Password -->
+        <div class="row g-4">
+            <div class="col-lg-7">
                 <div class="panel-card">
                     <div class="panel-card-header">
-                        <h6><i class="fas fa-key ms-2"></i> تغییر رمز عبور</h6>
+                        <h6><i class="fas fa-user-edit ms-2"></i> ویرایش مشخصات</h6>
                     </div>
                     <div class="panel-card-body">
-                        <form id="passwordForm" novalidate>
-                            <input type="hidden" name="csrf_token"
-                                   value="<?= CSRF::token() ?>">
-                            <input type="hidden" name="action" value="change_password">
 
+                        <div class="profile-avatar-wrap text-center mb-4" style="position: relative; display: inline-block; width: 100%;">
+                            <div class="profile-avatar mx-auto" style="width: 110px; height: 110px; border-radius: 50%; position: relative; background: #1a1f3c; display: flex; align-items: center; justify-content: center; border: 2px solid #39FF14;">
+                                <?php if (!empty($user['avatar'])): ?>
+                                    <img src="../<?= $e($user['avatar']) ?>" alt="Avatar" class="w-100 h-100 object-fit-cover" style="border-radius: 50%;">
+                                <?php else: ?>
+                                    <div class="profile-avatar-placeholder" style="font-size: 32px; color: #39FF14; font-weight: bold;">
+                                        <?= mb_substr($user['full_name'], 0, 1) ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <label for="avatarInput" class="avatar-upload-btn" title="تغییر تصویر" style="cursor: pointer; position: absolute; bottom: 0; right: calc(50% - 55px); z-index: 5; background: #00F0FF; color: #0a0e27; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #1a1f3c; margin: 0;">
+                                    <i class="fas fa-camera" style="font-size: 14px;"></i>
+                                </label>
+                            </div>
+                            <input type="file" id="avatarInput" accept="image/png, image/jpeg, image/webp" class="d-none">
+                            <p class="mt-2 text-muted" style="font-size: 11px; margin-bottom: 0; background-color: #9eeaf9;">فرمت‌های مجاز: JPG, PNG, WebP (حداکثر ۵ مگابایت)</p>
+                        </div>
+
+                        <form id="profileForm">
                             <div class="row g-3">
-                                <div class="col-md-4">
-                                    <label class="form-label-panel">رمز فعلی</label>
-                                    <input type="password" name="current_password"
-                                           class="form-control-panel"
-                                           placeholder="••••••••" required>
+                                <div class="col-md-6">
+                                    <label class="form-label-panel"><i class="fas fa-user"></i> نام و نام خانوادگی</label>
+                                    <input type="text" name="full_name" class="form-control-panel" value="<?= $e($user['full_name']) ?>" required>
                                 </div>
-                                <div class="col-md-4">
-                                    <label class="form-label-panel">رمز جدید</label>
-                                    <input type="password" name="new_password"
-                                           class="form-control-panel"
-                                           placeholder="••••••••" required minlength="8">
+                                <div class="col-md-6">
+                                    <label class="form-label-panel"><i class="fas fa-envelope"></i> ایمیل</label>
+                                    <input type="email" name="email" class="form-control-panel" value="<?= $e($user['email']) ?>" required>
                                 </div>
-                                <div class="col-md-4">
-                                    <label class="form-label-panel">تکرار رمز جدید</label>
-                                    <input type="password" name="new_password_confirm"
-                                           class="form-control-panel"
-                                           placeholder="••••••••" required>
+                                <div class="col-md-6">
+                                    <label class="form-label-panel"><i class="fas fa-phone"></i> شماره موبایل</label>
+                                    <input type="text" name="phone" class="form-control-panel" value="<?= $e($user['phone'] ?? '') ?>" required>
+                                </div>
+                                <div class="col-12 mt-4 text-end">
+                                    <button type="submit" class="theme-btn btn-neon primary w-100" id="profileSubmitBtn">
+                                        ذخیره مشخصات
+                                    </button>
                                 </div>
                             </div>
+                        </form>
 
-                            <button type="submit" class="theme-btn btn-sm mt-3" id="passwordBtn">
-                                <i class="fas fa-lock ms-2"></i> تغییر رمز عبور
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="panel-card">
+                    <div class="panel-card-header">
+                        <h6><i class="fas fa-lock ms-2"></i> تغییر رمز عبور</h6>
+                    </div>
+                    <div class="panel-card-body">
+                        <form id="passwordForm">
+                            <div class="field-group mb-3 text-right">
+                                <label class="form-label-panel">رمز عبور فعلی</label>
+                                <input type="password" name="current_password" class="form-control-panel" required>
+                            </div>
+                            <div class="field-group mb-3 text-right">
+                                <label class="form-label-panel">رمز عبور جدید</label>
+                                <input type="password" name="new_password" id="new_password" class="form-control-panel" required minlength="8">
+                            </div>
+                            <div class="field-group mb-4 text-right">
+                                <label class="form-label-panel">تکرار رمز عبور جدید</label>
+                                <input type="password" name="new_password_confirm" id="new_password_confirm" class="form-control-panel" required minlength="8">
+                            </div>
+                            <button type="submit" class="theme-btn btn-neon ghost w-100" id="passwordSubmitBtn">
+                                تغییر رمز عبور
                             </button>
                         </form>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>
@@ -187,87 +135,149 @@ $pageTitle = 'پروفایل من';
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/popup.js"></script>
 <script src="../assets/js/user-panel.js"></script>
+
 <script>
     const CSRF_TOKEN = '<?= CSRF::token() ?>';
     const API = '../backend/api/user.php';
 
-    // ── Avatar preview ──────────────────────────────────────────
-    document.getElementById('avatarInput').addEventListener('change', function () {
-        const file = this.files[0];
-        if (!file) return;
-        if (file.size > 5 * 1024 * 1024) {
-            Popup.error('حجم فایل', 'حداکثر اندازه تصویر ۵ مگابایت است.');
-            return;
-        }
-        const reader = new FileReader();
-        reader.onload = e => {
-            const preview = document.getElementById('avatarPreview');
-            if (preview.tagName === 'IMG') {
-                preview.src = e.target.result;
-            } else {
-                const img = document.createElement('img');
-                img.src = e.target.result;
-                img.alt = 'آواتار';
-                img.className = 'profile-avatar';
-                img.id = 'avatarPreview';
-                preview.replaceWith(img);
-            }
-        };
-        reader.readAsDataURL(file);
-        uploadAvatar(file);
-    });
+    // ── ۱. آپلود هوشمند و ضد کرش آواتار ──────────────────────────
+    const avatarInput = document.getElementById('avatarInput');
+    if (avatarInput) {
+        avatarInput.addEventListener('change', async e => {
+            if (!e.target.files.length) return;
 
-    async function uploadAvatar(file) {
-        const fd = new FormData();
-        fd.append('action',     'upload_avatar');
-        fd.append('csrf_token', CSRF_TOKEN);
-        fd.append('avatar',     file);
-        try {
-            const res  = await fetch(API, { method: 'POST', credentials: 'same-origin', body: fd });
-            const data = await res.json();
-            data.success
-                ? Popup.success('آواتار', 'تصویر پروفایل به‌روز شد.')
-                : Popup.error('خطا', data.message);
-        } catch {
-            Popup.error('خطای ارتباطی', 'لطفاً دوباره تلاش کنید.');
-        }
+            const fd = new FormData();
+            fd.append('avatar', e.target.files[0]);
+            fd.append('action', 'upload_avatar');
+            fd.append('csrf_token', CSRF_TOKEN);
+
+            try {
+                const res = await fetch(API, { method: 'POST', credentials: 'same-origin', body: fd });
+
+                if (!res.ok) {
+                    const errorText = await res.text();
+                    console.error("خطای ساختاری سرور:", errorText);
+                    window.Popup?.error('خطای سرور', `کد خطا: ${res.status}. پاسخ خام در کنسول ذخیره شد.`);
+                    return;
+                }
+
+                const rawText = await res.text();
+                let data;
+                try {
+                    data = JSON.parse(rawText);
+                } catch(jsonErr) {
+                    console.error("پاسخ سرور JSON معتبر نبود:", rawText);
+                    window.Popup?.error('خطای ساختار بک‌اند', 'سرور خروجی متنی غیراستاندارد ارسال کرد. کنسول مرورگر را بررسی کنید.');
+                    return;
+                }
+
+                if (data.success) {
+                    window.Popup?.success('تصویر پروفایل', data.message);
+                    if (data.avatar_url) {
+                        const newSrc = '../' + data.avatar_url + '?t=' + new Date().getTime();
+                        document.querySelectorAll('.sidebar-avatar img, .profile-avatar img, .topbar-avatar img').forEach(img => {
+                            img.src = newSrc;
+                        });
+                        const placeholder = document.querySelector('.profile-avatar-placeholder');
+                        if (placeholder) {
+                            location.reload();
+                        }
+                    } else {
+                        setTimeout(() => location.reload(), 1000);
+                    }
+                } else {
+                    window.Popup?.error('خطا', data.message || 'عملیات آپلود با شکست مواجه شد.');
+                }
+            } catch (err) {
+                console.error("Network Fetch Error:", err);
+                window.Popup?.error('خطای ارتباطی', 'مشکلی در پردازش یا ارسال داده‌ها به سرور پیش آمد.');
+            } finally {
+                e.target.value = '';
+            }
+        });
     }
 
-    // ── Edit profile ────────────────────────────────────────────
-    document.getElementById('profileForm').addEventListener('submit', async e => {
+    // ── ۲. ویرایش مشخصات پروفایل ──────────────────────────────────
+    document.getElementById('profileForm').addEventListener('submit', async (e) => {
         e.preventDefault();
+        const btn = document.getElementById('profileSubmitBtn');
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ذخیره...';
+
         const fd = new FormData(e.target);
-        fd.set('csrf_token', CSRF_TOKEN);
+        fd.append('action', 'update_profile');
+        fd.append('csrf_token', CSRF_TOKEN);
+
         try {
-            const res  = await fetch(API, { method: 'POST', credentials: 'same-origin', body: fd });
-            const data = await res.json();
-            data.success
-                ? Popup.success('پروفایل', data.message)
-                : Popup.error('خطا', data.message);
-        } catch {
-            Popup.error('خطای ارتباطی', 'لطفاً دوباره تلاش کنید.');
+            const res = await fetch(API, { method: 'POST', credentials: 'same-origin', body: fd });
+            const rawText = await res.text();
+
+            let data;
+            try { data = JSON.parse(rawText); } catch(e) {
+                console.error("Raw response:", rawText);
+                window.Popup?.error('خطای سرور', 'پاسخ سرور از نوع JSON معتبر نیست.');
+                return;
+            }
+
+            if (data.success) {
+                window.Popup?.success('موفقیت‌آمیز', data.message);
+                const newName = fd.get('full_name');
+                document.querySelectorAll('.sidebar-user-name, .topbar-username').forEach(el => el.textContent = newName);
+            } else {
+                window.Popup?.error('خطا', data.message);
+            }
+        } catch (err) {
+            window.Popup?.error('خطای ارتباطی', 'ارتباط با سرور برقرار نشد.');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
         }
     });
 
-    // ── Change password ─────────────────────────────────────────
-    document.getElementById('passwordForm').addEventListener('submit', async e => {
+    // ── ۳. تغییر رمز عبور ─────────────────────────────────────────
+    document.getElementById('passwordForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const fd  = new FormData(e.target);
-        const np  = fd.get('new_password');
-        const npc = fd.get('new_password_confirm');
-        if (np !== npc) { Popup.error('عدم تطابق', 'رمز جدید و تکرار آن یکسان نیستند.'); return; }
-        fd.set('csrf_token', CSRF_TOKEN);
+
+        const np = document.getElementById('new_password').value;
+        const npc = document.getElementById('new_password_confirm').value;
+
+        if (np !== npc) {
+            window.Popup?.error('عدم تطابق', 'رمز عبور جدید با تکرار آن یکسان نیست.');
+            return;
+        }
+
+        const btn = document.getElementById('passwordSubmitBtn');
+        const originalText = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال تغییر...';
+
+        const fd = new FormData(e.target);
+        fd.append('action', 'change_password');
+        fd.append('csrf_token', CSRF_TOKEN);
+
         try {
-            const res  = await fetch(API, { method: 'POST', credentials: 'same-origin', body: fd });
-            const data = await res.json();
+            const res = await fetch(API, { method: 'POST', credentials: 'same-origin', body: fd });
+            const rawText = await res.text();
+
+            let data;
+            try { data = JSON.parse(rawText); } catch(e) {
+                console.error("Raw response:", rawText);
+                window.Popup?.error('خطای سرور', 'پاسخ سرور نامعتبر است.');
+                return;
+            }
+
             if (data.success) {
-                Popup.success('رمز عبور', data.message);
+                window.Popup?.success('بروزرسانی رمز عبور', data.message);
                 e.target.reset();
             } else {
-                Popup.error('خطا', data.message);
+                window.Popup?.error('خطا', data.message);
             }
-        } catch {
-            Popup.error('خطای ارتباطی', 'لطفاً دوباره تلاش کنید.');
+        } catch (err) {
+            window.Popup?.error('خطای ارتباطی', 'ارتباط با سرور برقرار نشد.');
+        } finally {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
         }
     });
 </script>

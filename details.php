@@ -114,13 +114,13 @@ $pageTitle = $location['title'];
             <div class="container">
                 <div class="header-inner d-flex align-items-center justify-content-between">
                     <div class="logo-outer">
-                        <div class="logo"><a href="index.html"><img src="assets/images/logo.svg" alt="لوگو سامانه رزرو"></a></div>
+                        <div class="logo"><a href="index.php"><img src="assets/images/logo.svg" alt="لوگو سامانه رزرو"></a></div>
                     </div>
                     <nav class="main-menu d-none d-lg-block">
                         <ul class="navigation">
-                            <li><a href="index.html">صفحه اصلی</a></li>
-                            <li><a href="service.html">رزرو استادیوم</a></li>
-                            <li><a href="contact_us.html">تماس با ما</a></li>
+                            <li><a href="index.php">صفحه اصلی</a></li>
+                            <li><a href="service.php">رزرو استادیوم</a></li>
+                            <li><a href="contact_us.php">تماس با ما</a></li>
                         </ul>
                     </nav>
                     <div class="header-actions d-flex align-items-center gap-3">

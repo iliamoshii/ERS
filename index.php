@@ -1,3 +1,12 @@
+<?php
+// فراخوانی هسته سیستم برای بررسی وضعیت ورود
+require_once __DIR__ . '/backend/bootstrap.php';
+use Core\Auth;
+
+$isLoggedIn = Auth::check();
+$isAdmin = $isLoggedIn ? Auth::isAdmin() : false;
+$currentUser = $isLoggedIn ? Auth::user() : null;
+?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -8,30 +17,23 @@
 
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
 
-    <!-- فونت‌های فارسی -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
-    
-    <!-- Font Awesome -->
+
     <link rel="stylesheet" href="assets/css/FontAwesome.Pro.7.1.0/css/all.css">
-    
-    <!-- Bootstrap -->
+
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Slick Carousel -->
+
     <link rel="stylesheet" type="text/css" href="assets/css/slick.min.css"/>
     <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-    
-    <!-- AOS Animation -->
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- Custom Styles -->
+
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 <div class="page-wrapper">
 
-    <!-- Preloader -->
     <div class="preloader">
         <div class="loader-container">
             <div class="football-loader"></div>
@@ -39,14 +41,13 @@
         </div>
     </div>
 
-    <!-- Header -->
     <header class="main-header" id="header">
         <div class="header-upper">
             <div class="container">
                 <div class="header-inner d-flex align-items-center justify-content-between">
                     <div class="logo-outer">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="assets/images/Full-logo.png" alt="لوگو سامانه رزرو" title="سامانه رزرو استادیوم">
                             </a>
                         </div>
@@ -58,15 +59,31 @@
                             <li><a href="#services">خدمات</a></li>
                             <li><a href="#gallery">گالری</a></li>
                             <li><a href="#faq">سوالات متداول</a></li>
-                            <li><a href="contact_us.html">تماس با ما</a></li>
+                            <li><a href="contact_us.php">تماس با ما</a></li>
                         </ul>
                     </nav>
 
                     <div class="header-actions d-flex align-items-center gap-3">
-                        <a href="Form.html" class="theme-btn">
-                            <i class="fas fa-sign-in-alt ms-2"></i>
-                            ورود / ثبت‌نام
-                        </a>
+
+                        <?php if ($isLoggedIn): ?>
+                            <?php if ($isAdmin): ?>
+                                <a href="admin/dashboard.php" class="theme-btn" id="userPanelLink">
+                                    <i class="fas fa-user-shield ms-2"></i>
+                                    پنل مدیریت
+                                </a>
+                            <?php else: ?>
+                                <a href="user/dashboard.php" class="theme-btn" id="userPanelLink">
+                                    <i class="fas fa-user ms-2"></i>
+                                    <?= htmlspecialchars(mb_substr($currentUser['full_name'], 0, 15)) ?>
+                                </a>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <a href="Form.html" class="theme-btn" id="userPanelLink">
+                                <i class="fas fa-sign-in-alt ms-2"></i>
+                                ورود / ثبت‌نام
+                            </a>
+                        <?php endif; ?>
+
                         <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle">
                             <span></span>
                             <span></span>
@@ -78,7 +95,6 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-overlay"></div>
         <div class="mobile-menu-content">
@@ -91,13 +107,12 @@
                     <li><a href="#services">خدمات</a></li>
                     <li><a href="#gallery">گالری</a></li>
                     <li><a href="#faq">سوالات متداول</a></li>
-                    <li><a href="contact_us.html">تماس با ما</a></li>
+                    <li><a href="contact_us.php">تماس با ما</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero-section" id="home">
         <div class="hero-bg-animation"></div>
         <div class="container">
@@ -109,7 +124,7 @@
                             بهترین پلتفرم رزرو ورزشی
                         </span>
                         <h1 class="hero-title">
-                            هیجان فوتبال در 
+                            هیجان فوتبال در
                             <span class="neon-highlight">چمن مصنوعی‌های مدرن</span>
                         </h1>
                         <p class="hero-description">
@@ -130,7 +145,7 @@
                             </div>
                         </div>
                         <div class="hero-btns">
-                            <a href="service.html" class="theme-btn btn-lg">
+                            <a href="service.php" class="theme-btn btn-lg">
                                 <i class="fas fa-search ms-2"></i>
                                 همین حالا زمین انتخاب کن
                             </a>
@@ -145,20 +160,19 @@
                     <div class="hero-animation">
                         <div class="animation-wrapper">
                             <lottie-player
-                                src="assets/js/Football team players.json"
-                                background="transparent"
-                                speed="1"
-                                style="width: 100%; height: 100%;"
-                                loop
-                                autoplay>
+                                    src="assets/js/Football team players.json"
+                                    background="transparent"
+                                    speed="1"
+                                    style="width: 100%; height: 100%;"
+                                    loop
+                                    autoplay>
                             </lottie-player>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <!-- Floating Elements -->
+
         <div class="floating-elements">
             <img src="assets/images/ball.svg" alt="توپ" class="floating-ball ball-1">
             <img src="assets/images/189795610-referee-flag-removebg-preview.png" alt="پرچم" class="floating-item item-1">
@@ -167,7 +181,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="service-section">
         <div class="container">
             <div class="section-heading text-center" data-aos="fade-up">
@@ -200,7 +213,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-card featured">
                         <div class="featured-badge">محبوب‌ترین</div>
@@ -226,7 +239,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-card">
                         <div class="service-icon-wrapper">
@@ -255,7 +268,6 @@
         </div>
     </section>
 
-    <!-- Counter Section -->
     <section class="counter-section">
         <div class="container">
             <div class="row g-4">
@@ -299,7 +311,6 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section class="stadium-gallery" id="gallery">
         <div class="container">
             <div class="section-heading text-center" data-aos="fade-up">
@@ -369,7 +380,6 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
     <section class="faq-section" id="faq">
         <div class="container">
             <div class="row align-items-center">
@@ -437,13 +447,13 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                     <div class="faq-animation">
-                        <lottie-player 
-                            src="https://lottie.host/0188ef0d-8a1e-4e03-be35-35ab90cb98a0/iZlfRqm0kg.json"
-                            background="transparent"
-                            speed="1"
-                            style="width: 100%; height: 100%;"
-                            loop 
-                            autoplay>
+                        <lottie-player
+                                src="https://lottie.host/0188ef0d-8a1e-4e03-be35-35ab90cb98a0/iZlfRqm0kg.json"
+                                background="transparent"
+                                speed="1"
+                                style="width: 100%; height: 100%;"
+                                loop
+                                autoplay>
                         </lottie-player>
                     </div>
                 </div>
@@ -451,7 +461,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-wrapper" data-aos="zoom-in">
@@ -461,7 +470,7 @@
                         <p class="cta-description">همین الان زمین دلخواه خود را رزرو کنید و از بازی لذت ببرید</p>
                     </div>
                     <div class="col-lg-4 text-end">
-                        <a href="service.html" class="theme-btn btn-lg">
+                        <a href="service.php" class="theme-btn btn-lg">
                             <i class="fas fa-rocket ms-2"></i>
                             رزرو آنلاین
                         </a>
@@ -471,7 +480,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -507,7 +515,7 @@
                         <div class="footer-widget">
                             <h5 class="footer-widget-title">خدمات ما</h5>
                             <ul class="footer-links">
-                                <li><a href="service.html">رزرو آنلاین</a></li>
+                                <li><a href="service.php">رزرو آنلاین</a></li>
                                 <li><a href="#">اپلیکیشن موبایل</a></li>
                                 <li><a href="#">پشتیبانی ۲۴/۷</a></li>
                                 <li><a href="#">تخفیف‌های ویژه</a></li>
@@ -557,12 +565,10 @@
 
 </div>
 
-<!-- Scroll to Top -->
 <button class="scroll-top" id="scrollTop" aria-label="بازگشت به بالا">
     <i class="fas fa-chevron-up"></i>
 </button>
 
-<!-- Scripts -->
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/slick.min.js"></script>

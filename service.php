@@ -1,3 +1,12 @@
+<?php
+// فراخوانی هسته سیستم برای بررسی وضعیت ورود
+require_once __DIR__ . '/backend/bootstrap.php';
+use Core\Auth;
+
+$isLoggedIn = Auth::check();
+$isAdmin = $isLoggedIn ? Auth::isAdmin() : false;
+$currentUser = $isLoggedIn ? Auth::user() : null;
+?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -43,7 +52,7 @@
                 <div class="header-inner d-flex align-items-center justify-content-between">
                     <div class="logo-outer">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index.php">
                                 <img src="assets/images/Full-logo.png" alt="لوگو سامانه رزرو" title="سامانه رزرو استادیوم">
                             </a>
                         </div>
@@ -51,17 +60,33 @@
 
                     <nav class="main-menu d-none d-lg-block">
                         <ul class="navigation">
-                            <li><a href="index.html">صفحه اصلی</a></li>
-                            <li class="current"><a href="service.html">رزرو استادیوم</a></li>
-                            <li><a href="contact_us.html">تماس با ما</a></li>
+                            <li><a href="index.php">صفحه اصلی</a></li>
+                            <li class="current"><a href="service.php">رزرو استادیوم</a></li>
+                            <li><a href="contact_us.php">تماس با ما</a></li>
                         </ul>
                     </nav>
 
                     <div class="header-actions d-flex align-items-center gap-3">
-                        <a href="Form.html" class="theme-btn" id="userPanelLink">
-                            <i class="fas fa-user ms-2"></i>
-                            پنل کاربری
-                        </a>
+
+                        <?php if ($isLoggedIn): ?>
+                            <?php if ($isAdmin): ?>
+                                <a href="admin/dashboard.php" class="theme-btn btn-neon primary" id="userPanelLink">
+                                    <i class="fas fa-user-shield ms-2"></i>
+                                    پنل مدیریت
+                                </a>
+                            <?php else: ?>
+                                <a href="user/dashboard.php" class="theme-btn" id="userPanelLink">
+                                    <i class="fas fa-user ms-2"></i>
+                                    <?= htmlspecialchars(mb_substr($currentUser['full_name'], 0, 15)) ?>
+                                </a>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <a href="Form.html" class="theme-btn" id="userPanelLink">
+                                <i class="fas fa-sign-in-alt ms-2"></i>
+                                ورود / ثبت‌نام
+                            </a>
+                        <?php endif; ?>
+
                         <button class="mobile-menu-toggle d-lg-none" id="mobileMenuToggle">
                             <span></span><span></span><span></span>
                         </button>
@@ -77,9 +102,9 @@
             <button class="mobile-menu-close" id="mobileMenuClose"><i class="fas fa-times"></i></button>
             <nav>
                 <ul class="mobile-navigation">
-                    <li><a href="index.html">صفحه اصلی</a></li>
-                    <li><a href="service.html">رزرو استادیوم</a></li>
-                    <li><a href="contact_us.html">تماس با ما</a></li>
+                    <li><a href="index.php">صفحه اصلی</a></li>
+                    <li><a href="service.php">رزرو استادیوم</a></li>
+                    <li><a href="contact_us.php">تماس با ما</a></li>
                 </ul>
             </nav>
         </div>
@@ -147,7 +172,6 @@
                                 <label class="filter-label"><i class="fas fa-map-marker-alt"></i> منطقه</label>
                                 <select class="filter-select" id="location">
                                     <option value="">همه مناطق</option>
-                                    <!-- populated dynamically from real district values -->
                                 </select>
                             </div>
                         </div>
@@ -254,7 +278,6 @@
     <section class="stadium-grid-section">
         <div class="container">
 
-            <!-- Loading skeleton, shown until first fetch completes -->
             <div class="stadium-grid" id="loadingSkeleton">
                 <div class="skeleton-card"></div>
                 <div class="skeleton-card"></div>
@@ -286,7 +309,7 @@
                     <h2 class="cta-title">استادیوم خود را پیدا نکردید؟</h2>
                     <p class="cta-description">با تیم پشتیبانی ما تماس بگیرید تا بهترین گزینه را برای شما پیدا کنیم</p>
                     <div class="cta-actions">
-                        <a href="contact_us.html" class="theme-btn btn-lg">
+                        <a href="contact_us.php" class="theme-btn btn-lg">
                             <i class="fas fa-phone ms-2"></i> تماس با پشتیبانی
                         </a>
                     </div>
@@ -315,9 +338,9 @@
                         <div class="footer-widget">
                             <h5 class="footer-widget-title">دسترسی سریع</h5>
                             <ul class="footer-links">
-                                <li><a href="index.html">صفحه اصلی</a></li>
-                                <li><a href="service.html">رزرو استادیوم</a></li>
-                                <li><a href="contact_us.html">تماس با ما</a></li>
+                                <li><a href="index.php">صفحه اصلی</a></li>
+                                <li><a href="service.php">رزرو استادیوم</a></li>
+                                <li><a href="contact_us.php">تماس با ما</a></li>
                             </ul>
                         </div>
                     </div>

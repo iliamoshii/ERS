@@ -35,7 +35,7 @@ $admin = Auth::user();
             </button>
 
             <div class="user-dropdown" id="userDropdown">
-                <a href="../user/profile.php" class="dropdown-item">
+                <a href="../admin/profile.php" class="dropdown-item">
                     <i class="fas fa-user-edit"></i> پروفایل من
                 </a>
                 <div class="dropdown-divider"></div>

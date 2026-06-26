@@ -102,7 +102,7 @@ $active = fn(string $page): string => $cur === $page ? 'active' : '';
             <span>پنل کاربری</span>
         </a>
 
-        <a href="../index.html" class="nav-item">
+        <a href="../index.php" class="nav-item">
             <i class="fas fa-home"></i>
             <span>صفحه اصلی</span>
         </a>

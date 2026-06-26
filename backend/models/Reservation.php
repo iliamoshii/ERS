@@ -29,6 +29,7 @@ final class Reservation
         return $stmt->fetch() ?: null;
     }
 
+
     /**
      * Flat list of a user's reservations, optionally filtered by status
      * and capped at $limit (0 = no limit). Used by dashboard.php
